@@ -1,0 +1,35 @@
+<plugin name='vaadin' version='2.0.0' grailsVersion='1.1 &gt; *'>
+  <author>Daniel Bell, Les Hazlewood</author>
+  <authorEmail>daniel.r.bell@gmail.com, les@katasoft.com</authorEmail>
+  <title>Vaadin Grails Plugin</title>
+  <description>
+        A plugin for creating a Vaadin application on Grails. This plugin will
+        automatically enable an application to specify a Vaadin Application class
+        from which the application will start.
+
+        After installing the plugin:
+
+        1) Create a class that extends com.vaadin.Application
+
+        2) Specify this class in the Vaadin configuration file
+           (grails-app/conf/VaadinConfig.groovy)
+
+        3) Remove any Grails URL mappings for the URL where you want to access the
+           Vaadin application (in (grails-app/conf/UrlMappings.groovy)
+
+        4) Execute grails run-app
+    </description>
+  <documentation>http://vaadin.com</documentation>
+  <type>VaadinGrailsPlugin</type>
+  <resources />
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+  </repositories>
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

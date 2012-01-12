@@ -1,0 +1,7 @@
+How to install
+
+Goto and remove vaadin jar from: 
+[homefolder]\.grails\2.0.0\projects\agile-tool-ui-vaadin\plugins\vaadin-2.0.0\lib\
+
+Run this in grails command line:
+install-plugin https://github.com/downloads/ondrej-kvasnovsky/grails-vaadin-plugin/grails-vaadin-2.0.0.zip

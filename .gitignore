@@ -1,0 +1,11 @@
+metadata
+.settings/
+target/
+build/
+stacktrace.log
+web-app/WEB-INF/classes
+*.zip
+*.class
+*.war
+*.zip
+*.log
