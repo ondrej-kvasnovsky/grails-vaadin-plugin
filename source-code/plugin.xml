@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='2.0.0' grailsVersion='1.1 &gt; *'>
+<plugin name='vaadin' version='1.5' grailsVersion='1.1 &gt; *'>
   <author>Daniel Bell, Les Hazlewood</author>
   <authorEmail>daniel.r.bell@gmail.com, les@katasoft.com</authorEmail>
   <title>Vaadin Grails Plugin</title>

@@ -33,7 +33,7 @@ class VaadinGrailsPlugin {
     private static final transient Logger log = LoggerFactory.getLogger("org.codehaus.groovy.grails.plugins.VaadinGrailsPlugin");
 
     // the plugin version
-    def version = "2.0.0"
+    def version = "1.5"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
     // the other plugins this plugin depends on
@@ -146,7 +146,8 @@ class VaadinGrailsPlugin {
         def vaadinApplicationClass = config.applicationClass
         def vaadinProductionMode = config.productionMode
         def vaadinGAEMode = config.googleAppEngineMode
-        def applicationServlet = vaadinGAEMode ? GAE_APPLICATION_SERVLET : APPLICATION_SERVLET
+        // def applicationServlet = vaadinGAEMode ? GAE_APPLICATION_SERVLET : APPLICATION_SERVLET
+        def applicationServlet = config.servletClass ?: (vaadinGAEMode ? GAE_APPLICATION_SERVLET : APPLICATION_SERVLET)
 
         def contextParams = webXml."context-param"
         contextParams[contextParams.size() - 1] + {
