@@ -29,12 +29,55 @@ import java.util.Locale;
  */
 public class VaadinUtils {
 
+    /**
+     * Localization methods, providing access to i18n values.
+     * 
+     * @param key
+     *            for localization properties
+     * @param args
+     *            arguments, e.g. "Hallo {0}"
+     * @param locale
+     *            locale
+     * @return value from properties file or key (if key value is not found)
+     */
     public static String i18n(String key, Object[] args, Locale locale) {
-        return getMessageSource().getMessage(key, args, locale);
+        String message = null;
+        try {
+            message = getMessageSource().getMessage(key, args, locale);
+        } catch (Throwable t) {
+            System.err.println(t.getMessage());
+        }
+        if (message == null) {
+            // if fetching values fails, return the key
+            message = "[" + key + "]";
+        }
+        return message;
     }
 
+    /**
+     * Localization methods, providing access to i18n values.
+     * 
+     * @param key
+     *            for localization properties
+     * @param args
+     *            arguments, e.g. "Hello {0}"
+     * @defaultValue
+     * @param locale
+     *            locale
+     * @return value from properties file or key (if key value is not found)
+     */
     public static String i18n(String key, Object[] args, String defaultValue, Locale locale) {
-        return getMessageSource().getMessage(key, args, defaultValue, locale);
+        String message = null;
+        try {
+            message = getMessageSource().getMessage(key, args, defaultValue, locale);
+        } catch (Throwable t) {
+            System.err.println(t.getMessage());
+        }
+        if (message == null) {
+            // if fetching values fails, return the key
+            message = "[" + key + "]";
+        }
+        return message;
     }
 
     public static MessageSource getMessageSource() {

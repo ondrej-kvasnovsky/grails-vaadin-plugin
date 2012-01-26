@@ -25,7 +25,7 @@ import org.codehaus.groovy.grails.commons.AbstractInjectableGrailsClass;
  */
 public class DefaultVaadinGrailsClass extends AbstractInjectableGrailsClass implements VaadinGrailsClass {
 
-    public DefaultVaadinGrailsClass(Class wrappedClass) {
+    public DefaultVaadinGrailsClass(Class<?> wrappedClass) {
         super(wrappedClass, null);
     }
 }

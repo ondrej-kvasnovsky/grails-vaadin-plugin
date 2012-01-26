@@ -33,7 +33,7 @@ class VaadinGrailsPlugin {
     private static final transient Logger log = LoggerFactory.getLogger("org.codehaus.groovy.grails.plugins.VaadinGrailsPlugin");
 
     // the plugin version
-    def version = "1.5"
+    def version = "1.5.1"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1 > *"
     // the other plugins this plugin depends on
@@ -46,9 +46,17 @@ class VaadinGrailsPlugin {
     def watchedResources = [
         "file:./grails-app/vaadin/**/*.groovy"
     ]
+    // release-plugin --zipOnly
 
-    def author = "Daniel Bell, Les Hazlewood"
-    def authorEmail = "daniel.r.bell@gmail.com, les@katasoft.com"
+    def license = "APACHE"
+    
+    def developers = [
+            [ name: "Daniel Bell", email: "daniel.r.bell@gmail.com" ],
+            [ name: "Les Hazlewood", email: "les@katasoft.com" ],
+            [ name: "Ondrej Kvasnovsky", email: "ondrej.kvasnovsky@gmail.com" ] ]
+    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPVAADIN" ]
+    def scm = [ url: "https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin" ]
+    
     def title = "Vaadin Grails Plugin"
     def description = """
         A plugin for creating a Vaadin application on Grails. This plugin will
@@ -69,7 +77,7 @@ class VaadinGrailsPlugin {
     """
 
     // URL to the plugin's documentation
-    def documentation = "http://vaadin.com"
+    def documentation = "http://grails.org/plugin/vaadin"
 
     def configuration = null;
 

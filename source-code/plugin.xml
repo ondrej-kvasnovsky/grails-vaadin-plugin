@@ -1,6 +1,4 @@
-<plugin name='vaadin' version='1.5' grailsVersion='1.1 &gt; *'>
-  <author>Daniel Bell, Les Hazlewood</author>
-  <authorEmail>daniel.r.bell@gmail.com, les@katasoft.com</authorEmail>
+<plugin name='vaadin' version='1.5.1' grailsVersion='1.1 &gt; *'>
   <title>Vaadin Grails Plugin</title>
   <description>
         A plugin for creating a Vaadin application on Grails. This plugin will
@@ -19,14 +17,17 @@
 
         4) Execute grails run-app
     </description>
-  <documentation>http://vaadin.com</documentation>
+  <documentation>http://grails.org/plugin/vaadin</documentation>
   <type>VaadinGrailsPlugin</type>
-  <resources />
+  <resources>
+    <resource>VaadinConfig</resource>
+  </resources>
   <repositories>
     <repository name='grailsCentral' url='http://plugins.grails.org' />
     <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
     <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
   </repositories>
   <dependencies />
   <plugins />
