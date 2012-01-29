@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='1.5.1' grailsVersion='1.1 &gt; *'>
+<plugin name='vaadin' version='1.5.2' grailsVersion='1.1 &gt; *'>
   <title>Vaadin Grails Plugin</title>
   <description>
         A plugin for creating a Vaadin application on Grails. This plugin will
@@ -19,9 +19,7 @@
     </description>
   <documentation>http://grails.org/plugin/vaadin</documentation>
   <type>VaadinGrailsPlugin</type>
-  <resources>
-    <resource>VaadinConfig</resource>
-  </resources>
+  <resources />
   <repositories>
     <repository name='grailsCentral' url='http://plugins.grails.org' />
     <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
