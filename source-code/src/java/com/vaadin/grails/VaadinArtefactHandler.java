@@ -33,8 +33,7 @@ public class VaadinArtefactHandler extends ArtefactHandlerAdapter {
 
     public static final String TYPE = "Vaadin";
 
-    @SuppressWarnings({ "unchecked" })
-    public static boolean isVaadinClass(final Class clazz) {
+    public static boolean isVaadinClass(final Class<?> clazz) {
         if (clazz == null) {
             return false;
         }
@@ -68,7 +67,7 @@ public class VaadinArtefactHandler extends ArtefactHandlerAdapter {
         // we assume it is a Vaadin component intended to be managed (all Vaadin
         // packages start with 'com.vaadin', so
         // any UI subclasses would be discovered).
-        Class testClass = clazz;
+        Class<?> testClass = clazz;
         boolean result = false;
         while ((testClass != null) && !testClass.equals(GroovyObject.class) && !testClass.equals(Object.class)) {
             if (testClass.getName().contains(VaadinArtefactHandler.VAADIN_COMPONENT_DISCOVERY_TOKEN)) {

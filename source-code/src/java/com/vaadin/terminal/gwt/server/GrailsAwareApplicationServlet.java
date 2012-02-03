@@ -123,7 +123,6 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
      *             if an exception has occurred that interferes with the
      *             servlet's normal operation.
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void init(final ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);

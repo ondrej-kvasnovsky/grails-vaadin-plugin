@@ -112,7 +112,6 @@ public class RestartingApplicationHttpServletRequest extends HttpServletRequestW
 
     private final Map<String, String[]> parameterMap;
 
-    @SuppressWarnings({ "unchecked" })
     public RestartingApplicationHttpServletRequest(final HttpServletRequest request) {
         super(request);
         final Map<String, String[]> paramMap = request.getParameterMap();
@@ -136,21 +135,21 @@ public class RestartingApplicationHttpServletRequest extends HttpServletRequestW
     }
 
     @Override
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         return new LinkedHashMap<String, String[]>(this.parameterMap);
     }
 
     @Override
-    public Enumeration getParameterNames() {
+    public Enumeration<String> getParameterNames() {
         final Iterator<String> iter = new LinkedHashSet<String>(this.parameterMap.keySet()).iterator();
-        return new Enumeration() {
+        return new Enumeration<String>() {
             @Override
             public boolean hasMoreElements() {
                 return iter.hasNext();
             }
 
             @Override
-            public Object nextElement() {
+            public String nextElement() {
                 return iter.next();
             }
         };
