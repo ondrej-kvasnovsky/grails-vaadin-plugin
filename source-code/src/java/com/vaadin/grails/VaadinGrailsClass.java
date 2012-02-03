@@ -18,7 +18,8 @@ package com.vaadin.grails;
 import org.codehaus.groovy.grails.commons.InjectableGrailsClass;
 
 /**
- * TODO - Class JavaDoc
+ * Represents a Grails class that is to be configured in Spring and as such is
+ * injectable.
  * 
  * @author Les Hazlewood
  * @since 1.2

@@ -32,11 +32,16 @@ package com.vaadin.terminal.gwt.server;
  */
 public class UnavailableClassException extends RuntimeException {
 
-    public UnavailableClassException(String message, Throwable cause) {
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 9096141210695814735L;
+
+    public UnavailableClassException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public UnavailableClassException(Throwable cause) {
+    public UnavailableClassException(final Throwable cause) {
         super(cause);
     }
 }

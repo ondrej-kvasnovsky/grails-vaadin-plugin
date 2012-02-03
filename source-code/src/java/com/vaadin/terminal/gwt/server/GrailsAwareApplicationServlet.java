@@ -16,20 +16,21 @@
  */
 package com.vaadin.terminal.gwt.server;
 
+import java.io.IOException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.vaadin.Application;
 import org.codehaus.groovy.grails.commons.ApplicationHolder;
 import org.codehaus.groovy.grails.commons.GrailsApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 
-import java.io.IOException;
+import com.vaadin.Application;
 
 /**
  * @author Les Hazlewood
@@ -59,7 +60,7 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
     @Override
     @SuppressWarnings({ "unchecked" })
     protected Class<? extends Application> getApplicationClass() throws ClassNotFoundException {
-        return (Class<? extends Application>) doGetClassLoader().loadClass(this.applicationClassName);
+        return (Class<? extends Application>) this.doGetClassLoader().loadClass(this.applicationClassName);
     }
 
     /**
@@ -71,28 +72,30 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
      */
     @Override
     protected ClassLoader getClassLoader() throws ServletException {
-        return doGetClassLoader();
+        return this.doGetClassLoader();
     }
 
     @Override
-    protected Application getNewApplication(HttpServletRequest request) throws ServletException {
+    protected Application getNewApplication(final HttpServletRequest request) throws ServletException {
         Application app = null;
 
         try {
             app = (Application) ApplicationHolder.getApplication().getMainContext()
-                    .getBean(VAADIN_APPLICATION_BEAN_NAME);
-        } catch (BeansException e) {
-            if (log.isInfoEnabled()) {
-                log.info("Unable to acquire new Vaadin Application instance from Spring application context.  Falling "
-                        + "back to a vaadinApplicationClass.newInstance() call "
-                        + "(note that this prevents dependency injection)...");
+                    .getBean(GrailsAwareApplicationServlet.VAADIN_APPLICATION_BEAN_NAME);
+        } catch (final BeansException e) {
+            if (GrailsAwareApplicationServlet.log.isInfoEnabled()) {
+                GrailsAwareApplicationServlet.log
+                        .info("Unable to acquire new Vaadin Application instance from Spring application context.  Falling "
+                                + "back to a vaadinApplicationClass.newInstance() call "
+                                + "(note that this prevents dependency injection)...");
             }
-            log.debug("Beans exception when attempting to acquire new Vaadin application instance from Spring:", e);
+            GrailsAwareApplicationServlet.log.debug(
+                    "Beans exception when attempting to acquire new Vaadin application instance from Spring:", e);
         }
 
         if (app == null) {
             try {
-                app = getApplicationClass().newInstance();
+                app = this.getApplicationClass().newInstance();
             } catch (final IllegalAccessException e) {
                 throw new ServletException("getNewApplication failed", e);
             } catch (final InstantiationException e) {
@@ -122,7 +125,7 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
+    public void init(final ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
 
         // Gets the application class name
@@ -136,8 +139,8 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
         this.applicationClassName = applicationClassName;
         // make sure it exists at startup:
         try {
-            getApplicationClass();
-        } catch (ClassNotFoundException e) {
+            this.getApplicationClass();
+        } catch (final ClassNotFoundException e) {
             throw new ServletException("Failed to load application class: " + this.applicationClassName, e);
         }
     }
@@ -150,12 +153,12 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
     // different class hierarchy
 
     @Override
-    protected void service(HttpServletRequest httpReq, HttpServletResponse response) throws ServletException,
-            IOException {
+    protected void service(final HttpServletRequest httpReq, final HttpServletResponse response)
+            throws ServletException, IOException {
 
         HttpServletRequest request = httpReq; // default the request to use to
                                               // be the method argument
-        String restartToken = RestartingApplicationHttpServletRequest.getRestartToken();
+        final String restartToken = RestartingApplicationHttpServletRequest.getRestartToken();
 
         if (restartToken != null) {
             // The plugin has detected a source code change, so verify that the
@@ -167,12 +170,12 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
             // we'll need to guarantee that the Vaadin application (not Grails)
             // restarts:
 
-            HttpSession session = request.getSession();
+            final HttpSession session = request.getSession();
 
-            String sessionRestartToken = (String) session
+            final String sessionRestartToken = (String) session
                     .getAttribute(RestartingApplicationHttpServletRequest.RESTART_TOKEN_SESSION_KEY);
 
-            if (sessionRestartToken == null || !sessionRestartToken.equals(restartToken)) {
+            if ((sessionRestartToken == null) || !sessionRestartToken.equals(restartToken)) {
                 // the current session doesn't reflect the up-to-date restart
                 // token. Make sure the
                 // 'restartApplication' parameter is artificially set:

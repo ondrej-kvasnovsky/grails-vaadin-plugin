@@ -15,9 +15,14 @@
  */
 package com.vaadin.terminal.gwt.server;
 
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import java.util.*;
 
 /**
  * An {@code HttpServletRequest} wrapper implementation that guarantees the
@@ -46,61 +51,6 @@ public class RestartingApplicationHttpServletRequest extends HttpServletRequestW
             + ".RESTART_TOKEN_SESSION_KEY";
 
     private static String restartToken;
-
-    private final Map<String, String[]> parameterMap;
-
-    @SuppressWarnings({ "unchecked" })
-    public RestartingApplicationHttpServletRequest(HttpServletRequest request) {
-        super(request);
-        Map<String, String[]> paramMap = request.getParameterMap();
-        if (paramMap == null || paramMap.isEmpty()) {
-            this.parameterMap = new LinkedHashMap<String, String[]>(1);
-        } else {
-            this.parameterMap = new LinkedHashMap<String, String[]>(paramMap.size() + 1);
-
-        }
-        // ensure this exists to guarantee an application reload:
-        this.parameterMap.put(Constants.URL_PARAMETER_RESTART_APPLICATION, new String[] { "true" });
-    }
-
-    @Override
-    public String getParameter(String name) {
-        String[] values = this.parameterMap.get(name);
-        if (values == null || values.length == 0) {
-            return null;
-        }
-        return values[0];
-    }
-
-    @Override
-    public Map getParameterMap() {
-        return new LinkedHashMap<String, String[]>(this.parameterMap);
-    }
-
-    @Override
-    public Enumeration getParameterNames() {
-        final Iterator<String> iter = new LinkedHashSet<String>(this.parameterMap.keySet()).iterator();
-        return new Enumeration() {
-            public boolean hasMoreElements() {
-                return iter.hasNext();
-            }
-
-            public Object nextElement() {
-                return iter.next();
-            }
-        };
-    }
-
-    @Override
-    public String[] getParameterValues(String name) {
-        String[] values = this.parameterMap.get(name);
-        if (values == null || values.length == 0) {
-            return null;
-        }
-        String[] copy = new String[values.length];
-        System.arraycopy(values, 0, copy, 0, values.length);
-        return copy;
-    }
 
     /**
      * Returns a token value used to determine if a request's associated Vaadin
@@ -142,7 +92,7 @@ public class RestartingApplicationHttpServletRequest extends HttpServletRequestW
      *         application needs to be reloaded.
      */
     public static String getRestartToken() {
-        return restartToken;
+        return RestartingApplicationHttpServletRequest.restartToken;
     }
 
     /**
@@ -156,7 +106,64 @@ public class RestartingApplicationHttpServletRequest extends HttpServletRequestW
      *            instances to be dynamically recreated after a Grails Vaadin
      *            component source-code change.
      */
-    public static void setRestartToken(String token) {
+    public static void setRestartToken(final String token) {
         RestartingApplicationHttpServletRequest.restartToken = token;
+    }
+
+    private final Map<String, String[]> parameterMap;
+
+    @SuppressWarnings({ "unchecked" })
+    public RestartingApplicationHttpServletRequest(final HttpServletRequest request) {
+        super(request);
+        final Map<String, String[]> paramMap = request.getParameterMap();
+        if ((paramMap == null) || paramMap.isEmpty()) {
+            this.parameterMap = new LinkedHashMap<String, String[]>(1);
+        } else {
+            this.parameterMap = new LinkedHashMap<String, String[]>(paramMap.size() + 1);
+
+        }
+        // ensure this exists to guarantee an application reload:
+        this.parameterMap.put(Constants.URL_PARAMETER_RESTART_APPLICATION, new String[] { "true" });
+    }
+
+    @Override
+    public String getParameter(final String name) {
+        final String[] values = this.parameterMap.get(name);
+        if ((values == null) || (values.length == 0)) {
+            return null;
+        }
+        return values[0];
+    }
+
+    @Override
+    public Map getParameterMap() {
+        return new LinkedHashMap<String, String[]>(this.parameterMap);
+    }
+
+    @Override
+    public Enumeration getParameterNames() {
+        final Iterator<String> iter = new LinkedHashSet<String>(this.parameterMap.keySet()).iterator();
+        return new Enumeration() {
+            @Override
+            public boolean hasMoreElements() {
+                return iter.hasNext();
+            }
+
+            @Override
+            public Object nextElement() {
+                return iter.next();
+            }
+        };
+    }
+
+    @Override
+    public String[] getParameterValues(final String name) {
+        final String[] values = this.parameterMap.get(name);
+        if ((values == null) || (values.length == 0)) {
+            return null;
+        }
+        final String[] copy = new String[values.length];
+        System.arraycopy(values, 0, copy, 0, values.length);
+        return copy;
     }
 }

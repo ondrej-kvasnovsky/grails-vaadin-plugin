@@ -1,6 +1,7 @@
 metadata
 .settings/
 target/
+target-eclipse/
 build/
 stacktrace.log
 web-app/WEB-INF/classes

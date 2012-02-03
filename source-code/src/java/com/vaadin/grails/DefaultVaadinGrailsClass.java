@@ -18,14 +18,14 @@ package com.vaadin.grails;
 import org.codehaus.groovy.grails.commons.AbstractInjectableGrailsClass;
 
 /**
- * TODO - Class JavaDoc
+ * Configures Grails classe to be autowirable by name, always.
  * 
  * @author Les Hazlewood
  * @since 1.2
  */
 public class DefaultVaadinGrailsClass extends AbstractInjectableGrailsClass implements VaadinGrailsClass {
 
-    public DefaultVaadinGrailsClass(Class<?> wrappedClass) {
+    public DefaultVaadinGrailsClass(final Class<?> wrappedClass) {
         super(wrappedClass, null);
     }
 }

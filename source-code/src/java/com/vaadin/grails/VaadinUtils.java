@@ -15,11 +15,11 @@
  */
 package com.vaadin.grails;
 
+import java.util.Locale;
+
 import org.codehaus.groovy.grails.commons.ApplicationHolder;
 import org.springframework.beans.BeansException;
 import org.springframework.context.MessageSource;
-
-import java.util.Locale;
 
 /**
  * Vaadin plugin utility methods - mostly used for supporting dynamic method.
@@ -28,6 +28,18 @@ import java.util.Locale;
  * @since 1.2
  */
 public class VaadinUtils {
+
+    public static <T> T getBean(final Class<T> clazz) throws BeansException {
+        return ApplicationHolder.getApplication().getMainContext().getBean(clazz);
+    }
+
+    public static Object getBean(final String name) throws BeansException {
+        return ApplicationHolder.getApplication().getMainContext().getBean(name);
+    }
+
+    public static MessageSource getMessageSource() {
+        return ApplicationHolder.getApplication().getMainContext().getBean(MessageSource.class);
+    }
 
     /**
      * Localization methods, providing access to i18n values.
@@ -40,11 +52,11 @@ public class VaadinUtils {
      *            locale
      * @return value from properties file or key (if key value is not found)
      */
-    public static String i18n(String key, Object[] args, Locale locale) {
+    public static String i18n(final String key, final Object[] args, final Locale locale) {
         String message = null;
         try {
-            message = getMessageSource().getMessage(key, args, locale);
-        } catch (Throwable t) {
+            message = VaadinUtils.getMessageSource().getMessage(key, args, locale);
+        } catch (final Throwable t) {
             System.err.println(t.getMessage());
         }
         if (message == null) {
@@ -66,11 +78,11 @@ public class VaadinUtils {
      *            locale
      * @return value from properties file or key (if key value is not found)
      */
-    public static String i18n(String key, Object[] args, String defaultValue, Locale locale) {
+    public static String i18n(final String key, final Object[] args, final String defaultValue, final Locale locale) {
         String message = null;
         try {
-            message = getMessageSource().getMessage(key, args, defaultValue, locale);
-        } catch (Throwable t) {
+            message = VaadinUtils.getMessageSource().getMessage(key, args, defaultValue, locale);
+        } catch (final Throwable t) {
             System.err.println(t.getMessage());
         }
         if (message == null) {
@@ -78,17 +90,5 @@ public class VaadinUtils {
             message = "[" + key + "]";
         }
         return message;
-    }
-
-    public static MessageSource getMessageSource() {
-        return ApplicationHolder.getApplication().getMainContext().getBean(MessageSource.class);
-    }
-
-    public static Object getBean(String name) throws BeansException {
-        return ApplicationHolder.getApplication().getMainContext().getBean(name);
-    }
-
-    public static <T> T getBean(Class<T> clazz) throws BeansException {
-        return ApplicationHolder.getApplication().getMainContext().getBean(clazz);
     }
 }

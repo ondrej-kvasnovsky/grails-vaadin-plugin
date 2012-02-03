@@ -23,10 +23,6 @@ grails.project.test.reports.dir	= "target/test-reports"
 grails.release.scm.enabled = false
 grails.project.repos.default = "grailsCentral"
 
-grails.project.repos.vaadin.username = "ondrejkvasnovsky"
-grails.project.repos.vaadin.password = "Jakofa1"
-grails.project.repos.vaadin.portal = "grailsCentral"
-
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits( "global" ) {

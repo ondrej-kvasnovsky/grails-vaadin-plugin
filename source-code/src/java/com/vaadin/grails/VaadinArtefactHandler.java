@@ -17,6 +17,7 @@ package com.vaadin.grails;
 
 import groovy.lang.Closure;
 import groovy.lang.GroovyObject;
+
 import org.codehaus.groovy.grails.commons.ArtefactHandlerAdapter;
 import org.codehaus.groovy.grails.commons.GrailsClassUtils;
 
@@ -32,26 +33,20 @@ public class VaadinArtefactHandler extends ArtefactHandlerAdapter {
 
     public static final String TYPE = "Vaadin";
 
-    public VaadinArtefactHandler() {
-        super(TYPE, VaadinGrailsClass.class, DefaultVaadinGrailsClass.class, null);
-    }
-
-    public boolean isArtefactClass(Class clazz) {
-        return isVaadinClass(clazz);
-    }
-
     @SuppressWarnings({ "unchecked" })
-    public static boolean isVaadinClass(Class clazz) {
-        if (clazz == null)
+    public static boolean isVaadinClass(final Class clazz) {
+        if (clazz == null) {
             return false;
+        }
 
         // its not a closure
         if (Closure.class.isAssignableFrom(clazz)) {
             return false;
         }
 
-        if (GrailsClassUtils.isJdk5Enum(clazz))
+        if (GrailsClassUtils.isJdk5Enum(clazz)) {
             return false;
+        }
 
         // Check to see if the class is annotated as a VaadinComponent. This
         // annotation can be added to the
@@ -75,8 +70,8 @@ public class VaadinArtefactHandler extends ArtefactHandlerAdapter {
         // any UI subclasses would be discovered).
         Class testClass = clazz;
         boolean result = false;
-        while (testClass != null && !testClass.equals(GroovyObject.class) && !testClass.equals(Object.class)) {
-            if (testClass.getName().contains(VAADIN_COMPONENT_DISCOVERY_TOKEN)) {
+        while ((testClass != null) && !testClass.equals(GroovyObject.class) && !testClass.equals(Object.class)) {
+            if (testClass.getName().contains(VaadinArtefactHandler.VAADIN_COMPONENT_DISCOVERY_TOKEN)) {
                 result = true;
                 break;
             }
@@ -84,5 +79,14 @@ public class VaadinArtefactHandler extends ArtefactHandlerAdapter {
         }
 
         return result;
+    }
+
+    public VaadinArtefactHandler() {
+        super(VaadinArtefactHandler.TYPE, VaadinGrailsClass.class, DefaultVaadinGrailsClass.class, null);
+    }
+
+    @Override
+    public boolean isArtefactClass(final Class clazz) {
+        return VaadinArtefactHandler.isVaadinClass(clazz);
     }
 }
