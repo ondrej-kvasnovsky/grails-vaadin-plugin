@@ -46,7 +46,8 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        // compile 'com.vaadin:vaadin:6.5.1'
+        compile 'com.vaadin:vaadin:6.7.4'
+        runtime 'com.vaadin:vaadin:6.7.4'
     }
 
 }
