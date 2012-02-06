@@ -17,18 +17,18 @@
 
 import grails.util.Environment
 import com.vaadin.grails.VaadinArtefactHandler
-import com.vaadin.terminal.gwt.server.RestartingApplicationHttpServletRequest
+import com.vaadin.grails.terminal.gwt.server.RestartingApplicationHttpServletRequest
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
-import com.vaadin.terminal.gwt.server.GrailsAwareApplicationServlet
+import com.vaadin.grails.terminal.gwt.server.GrailsAwareApplicationServlet
 import org.springframework.context.i18n.LocaleContextHolder
 import com.vaadin.grails.VaadinUtils
 
 class VaadinGrailsPlugin {
 
     private static final String VAADIN_CONFIG_FILE = "VaadinConfig";
-    private static final String APPLICATION_SERVLET = "com.vaadin.terminal.gwt.server.GrailsAwareApplicationServlet";
-    private static final String GAE_APPLICATION_SERVLET = "com.vaadin.terminal.gwt.server.GrailsAwareGAEApplicationServlet";
+    private static final String APPLICATION_SERVLET = "com.vaadin.grails.terminal.gwt.server.GrailsAwareApplicationServlet";
+    private static final String GAE_APPLICATION_SERVLET = "com.vaadin.grails.terminal.gwt.server.GrailsAwareGAEApplicationServlet";
 
     private static final transient Logger log = LoggerFactory.getLogger("org.codehaus.groovy.grails.plugins.VaadinGrailsPlugin");
 
