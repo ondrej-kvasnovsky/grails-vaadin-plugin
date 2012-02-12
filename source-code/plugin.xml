@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='1.5.2' grailsVersion='1.1 &gt; *'>
+<plugin name='vaadin' version='1.5.3' grailsVersion='1.1 &gt; *'>
   <title>Vaadin Grails Plugin</title>
   <description>
         A plugin for creating a Vaadin application on Grails. This plugin will
@@ -27,7 +27,14 @@
     <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
   </repositories>
-  <dependencies />
+  <dependencies>
+    <compile>
+      <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
+    </compile>
+    <runtime>
+      <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
+    </runtime>
+  </dependencies>
   <plugins />
   <runtimePluginRequirements />
   <behavior />
