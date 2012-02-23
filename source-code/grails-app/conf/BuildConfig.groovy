@@ -20,6 +20,9 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
+grails.project.target.level = 1.5
+grails.project.source.level = 1.5
+
 grails.release.scm.enabled = false
 grails.project.repos.default = "grailsCentral"
 
