@@ -31,9 +31,9 @@
     <compile>
       <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
     </compile>
-    <runtime>
-      <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
-    </runtime>
+    <build>
+      <dependency group='org.grails.plugins' name='release' version='1.0.1' />
+    </build>
   </dependencies>
   <plugins />
   <runtimePluginRequirements />
