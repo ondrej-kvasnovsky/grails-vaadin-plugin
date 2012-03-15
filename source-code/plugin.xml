@@ -26,13 +26,14 @@
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
     <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
   </repositories>
   <dependencies>
     <compile>
       <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
     </compile>
     <build>
-      <dependency group='org.grails.plugins' name='release' version='1.0.1' />
+      <dependency group='org.grails.plugins' name='release' version='2.0.0.BUILD-SNAPSHOT' />
     </build>
   </dependencies>
   <plugins />

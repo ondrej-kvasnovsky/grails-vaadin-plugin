@@ -46,13 +46,13 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+
+        grailsRepo "http://grails.org/plugins"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         compile 'com.vaadin:vaadin:6.7.5'
-		build('org.grails.plugins:release:1.0.1') { 
-			export = false
-		}
+        build('org.grails.plugins:release:2.0.0.BUILD-SNAPSHOT') {  export = false }
     }
 
 }
