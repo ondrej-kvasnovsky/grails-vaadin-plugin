@@ -16,14 +16,13 @@
  */
 package com.vaadin.grails.terminal.gwt.server;
 
+import java.io.IOException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.vaadin.Application;
-import com.vaadin.terminal.gwt.server.AbstractApplicationServlet;
 
 import org.codehaus.groovy.grails.commons.ApplicationHolder;
 import org.codehaus.groovy.grails.commons.GrailsApplication;
@@ -31,7 +30,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 
-import java.io.IOException;
+import com.vaadin.Application;
+import com.vaadin.terminal.gwt.server.AbstractApplicationServlet;
+import com.vaadin.ui.Root;
 
 /**
  * @author Les Hazlewood
@@ -55,6 +56,7 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
     private String applicationClassName;
 
     private ClassLoader doGetClassLoader() {
+    	//Application.getCurrentApplication().getClass().getClassLoader();
         return ApplicationHolder.getApplication().getClassLoader();
     }
 
@@ -81,8 +83,9 @@ public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
         Application app = null;
 
         try {
-            app = (Application) ApplicationHolder.getApplication().getMainContext()
+            Root root = (Root) ApplicationHolder.getApplication().getMainContext()
                     .getBean(VAADIN_APPLICATION_BEAN_NAME);
+            app = root.getApplication();
         } catch (BeansException e) {
             if (log.isInfoEnabled()) {
                 log.info("Unable to acquire new Vaadin Application instance from Spring application context.  Falling "
