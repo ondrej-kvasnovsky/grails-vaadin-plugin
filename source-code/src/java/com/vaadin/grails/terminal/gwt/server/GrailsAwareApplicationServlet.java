@@ -16,19 +16,18 @@
  */
 package com.vaadin.grails.terminal.gwt.server;
 
+import grails.util.Holders;
+
 import java.io.IOException;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.codehaus.groovy.grails.commons.ApplicationHolder;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
 
 import com.vaadin.Application;
 import com.vaadin.terminal.gwt.server.AbstractApplicationServlet;
@@ -37,124 +36,82 @@ import com.vaadin.ui.Root;
 /**
  * @author Les Hazlewood
  * @author Daniel Bell
+ * @author Ondrej Kvasnovsky
+ * @author Jan Rudovsky
  */
 @SuppressWarnings("serial")
 public class GrailsAwareApplicationServlet extends AbstractApplicationServlet {
 
-    public static final String VAADIN_APPLICATION_BEAN_NAME = "vaadinApplication";
+	public static final String VAADIN_APPLICATION_BEAN_NAME = "vaadinApplication";
 
-    private static final transient Logger log = LoggerFactory.getLogger(GrailsAwareApplicationServlet.class);
+	private static final transient Logger log = LoggerFactory
+			.getLogger(GrailsAwareApplicationServlet.class);
 
-    /**
-     * Name of the class that extends com.vaadin.Application. We don't retain
-     * the actual Class instance directly due to Grails class reloading - the
-     * Application class or any that it references could be reloaded dynamically
-     * at runtime during development, so we look up the class with this name
-     * from the classloader every time it is requested when creating a new
-     * Application instance.
-     */
-    private String applicationClassName;
+	private Class<? extends Application> applicationClass;
+	private Class<? extends Root> rootClass;
 
-    private ClassLoader doGetClassLoader() {
-    	//Application.getCurrentApplication().getClass().getClassLoader();
-        return ApplicationHolder.getApplication().getClassLoader();
-    }
+	/**
+	 * Called by the servlet container to indicate to a servlet that the servlet
+	 * is being placed into service.
+	 * 
+	 * @param servletConfig
+	 *            the object containing the servlet's configuration and
+	 *            initialization parameters
+	 * @throws javax.servlet.ServletException
+	 *             if an exception has occurred that interferes with the
+	 *             servlet's normal operation.
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void init(javax.servlet.ServletConfig servletConfig)
+			throws javax.servlet.ServletException {
+		super.init(servletConfig);
 
-    @Override
-    @SuppressWarnings({ "unchecked" })
-    protected Class<? extends Application> getApplicationClass() throws ClassNotFoundException {
-        return (Class<? extends Application>) doGetClassLoader().loadClass(this.applicationClassName);
-    }
+		// Loads the application class using the same class loader
+		// as the servlet itself
 
-    /**
-     * Returns the Grails ClassLoader, because the servlet's ClassLoader can't
-     * see the Grails application source.
-     * 
-     * @return the ClassLoader stored in the {@link GrailsApplication}
-     * @throws ServletException
-     */
-    @Override
-    protected ClassLoader getClassLoader() throws ServletException {
-        return doGetClassLoader();
-    }
+		try {
+			applicationClass = ServletPortletHelper.getApplicationClass(
+					servletConfig.getInitParameter("application"),
+					servletConfig.getInitParameter(Application.ROOT_PARAMETER),
+					getClassLoader());
+			rootClass = (Class<? extends Root>) getClassLoader().loadClass(servletConfig.getInitParameter(Application.ROOT_PARAMETER));
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
 
-    @Override
-    protected Application getNewApplication(HttpServletRequest request) throws ServletException {
-        Application app = null;
+	@Override
+	protected Application getNewApplication(HttpServletRequest request)
+			throws ServletException {
+		// Creates a new application instance
+		try {
+			final Application application = getApplicationClass().newInstance();
+			final Root root = rootClass.newInstance();
+			root.setApplication(application);
+			return application;
+		} catch (final IllegalAccessException e) {
+			throw new ServletException("getNewApplication failed", e);
+		} catch (final InstantiationException e) {
+			throw new ServletException("getNewApplication failed", e);
+		} catch (ClassNotFoundException e) {
+			throw new ServletException("getNewApplication failed", e);
+		}
+	}
 
-        try {
-            Root root = (Root) ApplicationHolder.getApplication().getMainContext()
-                    .getBean(VAADIN_APPLICATION_BEAN_NAME);
-            app = root.getApplication();
-        } catch (BeansException e) {
-            if (log.isInfoEnabled()) {
-                log.info("Unable to acquire new Vaadin Application instance from Spring application context.  Falling "
-                        + "back to a vaadinApplicationClass.newInstance() call "
-                        + "(note that this prevents dependency injection)...");
-            }
-            log.debug("Beans exception when attempting to acquire new Vaadin application instance from Spring:", e);
-        }
-
-        if (app == null) {
-            try {
-                app = getApplicationClass().newInstance();
-            } catch (final IllegalAccessException e) {
-                throw new ServletException("getNewApplication failed", e);
-            } catch (final InstantiationException e) {
-                throw new ServletException("getNewApplication failed", e);
-            } catch (final ClassNotFoundException e) {
-                throw new ServletException("getNewApplication failed", e);
-            }
-        }
-
-        return app;
-    }
-
-    /**
-     * Called by the servlet container to indicate to a servlet that the servlet
-     * is being placed into service.
-     * <p/>
-     * This implementation caches the application class name (not the class
-     * itself) to use to acquire the Application class from the Grails
-     * classloader at runtime.
-     * 
-     * @param servletConfig
-     *            the object containing the servlet's configuration and
-     *            initialization parameters
-     * @throws ServletException
-     *             if an exception has occurred that interferes with the
-     *             servlet's normal operation.
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        super.init(servletConfig);
-
-        // Gets the application class name
-        final String applicationClassName = servletConfig.getInitParameter("application");
-        if (applicationClassName == null) {
-            throw new ServletException("The 'application' servlet init parameter was not specified.  This parameter "
-                    + "must be specified with a value of a fully qualified class name of a class that extends "
-                    + "com.vaadin.Application.");
-        }
-
-        this.applicationClassName = applicationClassName;
-        // make sure it exists at startup:
-        try {
-            getApplicationClass();
-        } catch (ClassNotFoundException e) {
-            throw new ServletException("Failed to load application class: " + this.applicationClassName, e);
-        }
-    }
-
-    // NOTE!!!
-    // If you change this implementation, you _MUST_ manually copy-and-paste the
-    // changes into the
-    // the GrailsAwareGAEApplicationServlet 'service' method implementation -
-    // the logic is identical, but in a
-    // different class hierarchy
-
-    @Override
+	@Override
+	protected Class<? extends Application> getApplicationClass()
+			throws ClassNotFoundException {
+		return applicationClass;
+	}
+	
+	@Override
+	protected ClassLoader getClassLoader() throws ServletException {
+		ClassLoader classLoader = Holders.getGrailsApplication().getClassLoader();
+		return classLoader;
+	}
+	
+	@Override
     protected void service(HttpServletRequest httpReq, HttpServletResponse response) throws ServletException,
             IOException {
 

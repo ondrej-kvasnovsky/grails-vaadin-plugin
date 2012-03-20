@@ -16,6 +16,8 @@
  */
 package com.vaadin.grails.terminal.gwt.server;
 
+import grails.util.Holders;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +55,7 @@ public class GrailsAwareGAEApplicationServlet extends GAEApplicationServlet {
     private String applicationClassName;
 
     private ClassLoader doGetClassLoader() {
-        return ApplicationHolder.getApplication().getClassLoader();
+        return Holders.getGrailsApplication().getClassLoader();
     }
 
     @Override
@@ -83,7 +85,7 @@ public class GrailsAwareGAEApplicationServlet extends GAEApplicationServlet {
         Application app = null;
 
         try {
-            app = (Application) ApplicationHolder.getApplication().getMainContext()
+            app = (Application) Holders.getGrailsApplication().getMainContext()
                     .getBean(GrailsAwareApplicationServlet.VAADIN_APPLICATION_BEAN_NAME);
         } catch (BeansException e) {
             if (log.isInfoEnabled()) {
