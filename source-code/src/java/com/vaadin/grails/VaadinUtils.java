@@ -15,9 +15,10 @@
  */
 package com.vaadin.grails;
 
+import grails.util.Holders;
+
 import java.util.Locale;
 
-import org.codehaus.groovy.grails.commons.ApplicationHolder;
 import org.springframework.beans.BeansException;
 import org.springframework.context.MessageSource;
 
@@ -30,15 +31,15 @@ import org.springframework.context.MessageSource;
 public class VaadinUtils {
 
     public static <T> T getBean(final Class<T> clazz) throws BeansException {
-        return ApplicationHolder.getApplication().getMainContext().getBean(clazz);
+        return Holders.getGrailsApplication().getMainContext().getBean(clazz);
     }
 
     public static Object getBean(final String name) throws BeansException {
-        return ApplicationHolder.getApplication().getMainContext().getBean(name);
+        return Holders.getGrailsApplication().getMainContext().getBean(name);
     }
 
     public static MessageSource getMessageSource() {
-        return ApplicationHolder.getApplication().getMainContext().getBean(MessageSource.class);
+        return Holders.getGrailsApplication().getMainContext().getBean(MessageSource.class);
     }
 
     /**
