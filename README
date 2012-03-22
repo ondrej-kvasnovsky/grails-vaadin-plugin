@@ -1,5 +1,7 @@
-Welcome to grails-vaadin plugin. 
+Welcome to the official source code repository of grails-vaadin plugin. 
 
-Official plugin has not been maintained for 10 months and many people need to use new version of Vaadin and maybe also new version of Grails. I have took this plugin: http://grails.org/plugin/vaadin and upgraded version of Vaadin to 6.7.4 and Grails 2.0.0. 
+How to... 
 
-Info about plugin and installation: https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin/wiki
+* [install the plugin | https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin/wiki]
+* [hello world | http://ondrej-kvasnovsky.blogspot.com/2012/03/vaadin-and-grails-part-i-hello-world.html]
+* [list of Grails features and how to use them | http://ondrej-kvasnovsky.blogspot.com/2012/03/vaadin-and-grails-part-ii-what-is-in.html]
