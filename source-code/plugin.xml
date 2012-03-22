@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='1.7.3-alfa' grailsVersion='1.1 &gt; *'>
+<plugin name='vaadin' version='1.7.4-alfa' grailsVersion='1.1 &gt; *'>
   <title>Vaadin Grails Plugin</title>
   <description>
         A plugin for creating a Vaadin application on Grails. This plugin will
