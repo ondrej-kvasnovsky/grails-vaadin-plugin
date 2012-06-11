@@ -3,7 +3,11 @@
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="grails-app/conf"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="src" path=".link_to_grails_plugins/hibernate-2.0.3/grails-app/i18n">
+		<attributes>
+			<attribute name="com.springsource.sts.grails.core.SOURCE_FOLDER" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path=".link_to_grails_plugins/release-2.0.0.BUILD-SNAPSHOT/src/groovy">
 		<attributes>
 			<attribute name="com.springsource.sts.grails.core.SOURCE_FOLDER" value="true"/>
