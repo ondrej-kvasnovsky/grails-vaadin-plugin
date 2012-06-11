@@ -30,10 +30,10 @@
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='com.vaadin' name='vaadin' version='6.7.5' />
+      <dependency group='com.vaadin' name='vaadin' version='6.3.0' />
     </compile>
     <build>
-      <dependency group='org.grails.plugins' name='release' version='2.0.0.BUILD-SNAPSHOT' />
+      <dependency group='org.grails.plugins' name='release' version='2.0.2' />
     </build>
   </dependencies>
   <plugins />

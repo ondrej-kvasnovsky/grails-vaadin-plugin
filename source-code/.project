@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<locationURI>GRAILS_ROOT/2.0.1/projects/grails-vaadin/plugins</locationURI>
+			<locationURI>GRAILS_ROOT/2.0.3/projects/grails-vaadin/plugins</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
