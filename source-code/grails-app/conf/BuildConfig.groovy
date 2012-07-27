@@ -42,18 +42,18 @@ grails.project.dependency.resolution = {
         // from public Maven repositories
         mavenLocal()
         mavenCentral()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "http://snapshots.repository.codehaus.org"
+        mavenRepo "http://repository.codehaus.org"
+        mavenRepo "http://download.java.net/maven/2/"
+        mavenRepo "http://repository.jboss.com/maven2/"
 
         grailsRepo "http://grails.org/plugins"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        compile 'com.vaadin:vaadin:7.0.0.alpha1'
+        compile 'com.vaadin:vaadin:7.0.0.alpha2'
 
-        build('org.grails.plugins:release:2.0.0.BUILD-SNAPSHOT') {  export = false }
+        build('org.grails.plugins:release:2.0.2') {  export = false }
     }
 
 }

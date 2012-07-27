@@ -21,19 +21,21 @@
   <type>VaadinGrailsPlugin</type>
   <resources />
   <repositories>
-    <repository name='grailsCentral' url='http://plugins.grails.org' />
-    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
-    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://snapshots.repository.codehaus.org' url='http://snapshots.repository.codehaus.org/' />
+    <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
+    <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
+    <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
     <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='com.vaadin' name='vaadin' version='7.0.0.alpha1' />
+      <dependency group='com.vaadin' name='vaadin' version='7.0.0.alpha2' />
     </compile>
     <build>
-      <dependency group='org.grails.plugins' name='release' version='2.0.0.BUILD-SNAPSHOT' />
+      <dependency group='org.grails.plugins' name='release' version='2.0.2' />
     </build>
   </dependencies>
   <plugins />
