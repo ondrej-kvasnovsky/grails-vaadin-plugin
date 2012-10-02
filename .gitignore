@@ -10,3 +10,5 @@ web-app/WEB-INF/classes
 *.war
 *.zip
 *.log
+.idea/
+grails-vaadin7-demo/out/production
