@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="Grails" name="Grails" removed="false">
+          <file>file://$MODULE_DIR$/web-app/WEB-INF/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+    <facet type="web" name="GrailsWeb">
+      <configuration>
+        <webroots>
+          <root url="file://$MODULE_DIR$/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/grails-app/views" relative="/" />
+        </webroots>
+        <sourceRoots />
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/utils" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/vaadin" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library name="Grails User Library (grails-vaadin7-demo)">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.validation/validation-api/jars/validation-api-1.0.0.GA-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jsoup/jsoup/jars/jsoup-1.6.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.commons/commons-jexl/jars/commons-jexl-2.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-theme-compiler/jars/vaadin-theme-compiler-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.json/json/jars/json-20080701.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.liquibase/liquibase-core/jars/liquibase-core-2.0.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta2.jar!/" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="module" module-name="vaadin-inplacePlugin" exported="" />
+    <orderEntry type="module" module-name="grails-vaadin7-demo-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+  </component>
+</module>
+

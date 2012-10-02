@@ -1,0 +1,44 @@
+<plugin name='vaadin' version='1.5.4' grailsVersion='1.1 &gt; *'>
+  <title>Vaadin Grails Plugin</title>
+  <description>
+        A plugin for creating a Vaadin application on Grails. This plugin will
+        automatically enable an application to specify a Vaadin Application class
+        from which the application will start.
+
+        After installing the plugin:
+
+        1) Create a class that extends com.vaadin.Application
+
+        2) Specify this class in the Vaadin configuration file
+           (grails-app/conf/VaadinConfig.groovy)
+
+        3) Remove any Grails URL mappings for the URL where you want to access the
+           Vaadin application (in (grails-app/conf/UrlMappings.groovy)
+
+        4) Execute grails run-app
+    </description>
+  <documentation>http://grails.org/plugin/vaadin</documentation>
+  <type>VaadinGrailsPlugin</type>
+  <resources />
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://snapshots.repository.codehaus.org' url='http://snapshots.repository.codehaus.org/' />
+    <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
+    <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
+    <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
+    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
+  </repositories>
+  <dependencies>
+    <compile>
+      <dependency group='com.vaadin' name='vaadin' version='6.3.0' />
+    </compile>
+    <build>
+      <dependency group='org.grails.plugins' name='release' version='2.0.2' />
+    </build>
+  </dependencies>
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>
