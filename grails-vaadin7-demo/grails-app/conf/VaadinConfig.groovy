@@ -3,7 +3,7 @@ vaadin {
     // Your Vaadin UI classes that extends com.vaadin.ui.UI.
     // The application will be available at e.g. http://localhost:8080/grails-context/myui2
     mapping = [
-            "/myui/*": "vaadin7.MyUI",
+            "/*": "vaadin7.MyUI",
             "/myui2/*": "vaadin7.MyUI2"
     ]
 
