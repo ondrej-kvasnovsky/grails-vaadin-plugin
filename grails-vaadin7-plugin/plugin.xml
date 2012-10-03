@@ -1,12 +1,12 @@
-<plugin name='grails-vaadin7-plugin' version='1.7.1-beta2' grailsVersion='2.2 &gt; *'>
+<plugin name='vaadin' version='1.7.0-beta2' grailsVersion='2.2 &gt; *'>
   <author>Ondrej Kvasnovsky</author>
   <authorEmail>ondrej.kvasnovsky@gmail.com</authorEmail>
-  <title>Grails Vaadin7 Plugin</title>
+  <title>Vaadin 7 Plugin</title>
   <description>
         Grails plugin integrating Vaadin 7 into the grails project.
         </description>
   <documentation>http://grails.org/plugin/vaadin</documentation>
-  <type>GrailsVaadin7PluginGrailsPlugin</type>
+  <type>VaadinGrailsPlugin</type>
   <resources />
   <repositories>
     <repository name='grailsCentral' url='http://grails.org/plugins' />
@@ -22,10 +22,10 @@
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.0.beta2' />
-      <dependency group='com.vaadin' name='vaadin-server' version='7.0.0.beta2' />
       <dependency group='com.vaadin' name='vaadin-themes' version='7.0.0.beta2' />
       <dependency group='com.vaadin' name='vaadin-client' version='7.0.0.beta2' />
+      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.0.beta2' />
+      <dependency group='com.vaadin' name='vaadin-server' version='7.0.0.beta2' />
     </compile>
   </dependencies>
   <plugins />

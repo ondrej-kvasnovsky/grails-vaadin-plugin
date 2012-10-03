@@ -7,7 +7,7 @@ import com.vaadin.grails.VaadinConfiguration
  *
  * @author Ondrej Kvasnovsky
  */
-class GrailsVaadin7PluginGrailsPlugin {
+class VaadinGrailsPlugin {
 
     private static final transient Logger log = LoggerFactory.getLogger(this)
 
@@ -24,7 +24,7 @@ class GrailsVaadin7PluginGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    def title = "Grails Vaadin7 Plugin" // Headline display name of the plugin
+    def title = "Vaadin 7 Plugin" // Headline display name of the plugin
     def author = "Ondrej Kvasnovsky"
     def authorEmail = "ondrej.kvasnovsky@gmail.com"
     def description = '''
