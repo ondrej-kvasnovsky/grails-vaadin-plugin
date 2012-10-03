@@ -35,7 +35,7 @@ class VaadinGrailsPlugin {
 	private static final transient Logger log = LoggerFactory.getLogger("org.codehaus.groovy.grails.plugins.VaadinGrailsPlugin");
 
 	// the plugin version
-	def version = "1.7.4-alfa"
+	def version = "1.5.5"
 	// the version or versions of Grails the plugin is designed for
 	def grailsVersion = "1.1 > *"
 	// the other plugins this plugin depends on
@@ -95,12 +95,6 @@ class VaadinGrailsPlugin {
 
 	def configureComponentClass = { Class clazz ->
 
-		//Commented out - end-user should use the logging plugin of their choice
-		//(e.g. Grails default or 'sublog' plugin, etc).
-		//add log property:
-		//def log = LoggerFactory.getLogger(clazz)
-		//clazz.metaClass.getLog << {-> log}
-
 		//add i18n methods:
 		clazz.metaClass.i18n = {String key, Collection args = null, Locale locale = LocaleContextHolder.getLocale() ->
 			Object[] oArgs = args ? args as Object[] : null
@@ -153,6 +147,7 @@ class VaadinGrailsPlugin {
 		}
 
 		def vaadinApplicationClass = config.applicationClass
+        def vaadinWebApplicationClass = config.webApplicationClass
 		def vaadinProductionMode = config.productionMode
 		def vaadinGAEMode = config.googleAppEngineMode
 		// def applicationServlet = vaadinGAEMode ? GAE_APPLICATION_SERVLET : APPLICATION_SERVLET
@@ -180,7 +175,13 @@ class VaadinGrailsPlugin {
 					"param-name"(Application.ROOT_PARAMETER)
 					"param-value"(vaadinApplicationClass)
 				}
-
+                if(vaadinWebApplicationClass){
+                    "init-param" {
+                        "description"("WebApplication class to start (optional)")
+                        "param-name"("webApplication")
+                        "param-value"(vaadinWebApplicationClass)
+                    }
+                }
 				if(widgetset){
 					"init-param" {
 						"description"("Application widgetset")
