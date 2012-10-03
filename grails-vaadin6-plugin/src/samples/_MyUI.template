@@ -1,0 +1,22 @@
+package app
+
+import com.vaadin.Application
+import com.vaadin.ui.Window
+import com.vaadin.ui.Label
+
+/**
+ *
+ *
+ * @author
+ */
+class MyUI extends Application {
+
+    @Override
+    void init() {
+        Window window = new Window("Hello!")
+        Label label = new Label("Hello :-)")
+        window.addComponent(label)
+        setMainWindow(window)
+    }
+}
+
