@@ -28,6 +28,7 @@
     <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
     <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
     <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
+    <repository name='Codehaus' url='http://repository.codehaus.org/' />
   </repositories>
   <dependencies>
     <compile>
