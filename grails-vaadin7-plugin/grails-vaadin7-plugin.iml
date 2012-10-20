@@ -45,19 +45,13 @@
       <library name="Grails User Library (grails-vaadin7-plugin)">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.validation/validation-api/jars/validation-api-1.0.0.GA-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.0.0.beta2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jsoup/jsoup/jars/jsoup-1.6.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.5.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.commons/commons-jexl/jars/commons-jexl-2.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-theme-compiler/jars/vaadin-theme-compiler-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.json/json/jars/json-20080701.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.0.0.beta2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/xml-resolver/xml-resolver/jars/xml-resolver-1.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/xerces/xercesImpl/jars/xercesImpl-2.8.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.nekohtml/nekohtml/jars/nekohtml-1.9.9.jar!/" />
@@ -97,6 +91,13 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/classworlds/classworlds/jars/classworlds-1.1-alpha-2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/ant/ant/jars/ant-1.6.5.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-ant-tasks/jars/maven-ant-tasks-2.1.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.0.0.beta5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.0.0.beta5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.0.0.beta5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-theme-compiler/jars/vaadin-theme-compiler-7.0.0.beta5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared-deps/jars/vaadin-shared-deps-1.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.0.0.beta5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -104,7 +105,9 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
     <orderEntry type="module" module-name="grails-vaadin7-plugin-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.2.0.RC1" level="application" />
   </component>
 </module>
 
