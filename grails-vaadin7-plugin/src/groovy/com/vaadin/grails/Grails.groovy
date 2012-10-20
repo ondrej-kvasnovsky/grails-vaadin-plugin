@@ -98,9 +98,12 @@ class Grails {
      * @param locale locale
      * @return value from properties file or key (if key value is not found)
      */
-    public static String i18n(final String key, final Object[] args, final String defaultValue, final Locale locale) {
+    public static String i18n(final String key, final Object[] args, final String defaultValue, Locale locale) {
         String res = null
         try {
+            if (locale == null) {
+                locale = LocaleContextHolder.getLocale()
+            }
             if (defaultValue) {
                 res = getMessageSource().getMessage(key, args, defaultValue, locale)
             }
