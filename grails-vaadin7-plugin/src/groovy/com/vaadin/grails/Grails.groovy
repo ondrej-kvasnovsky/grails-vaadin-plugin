@@ -81,6 +81,18 @@ class Grails {
      *
      * @param key to localization property
      * @param args arguments, e.g. "Hallo {0}"
+     * @return value from properties file or key (if key value is not found)
+     */
+    public static String i18n(final String key, final Object[] args) {
+        String res = i18n(key, args, null, null)
+        return res
+    }
+
+    /**
+     * Provides access to i18n values.
+     *
+     * @param key to localization property
+     * @param args arguments, e.g. "Hallo {0}"
      * @param locale locale
      * @return value from properties file or key (if key value is not found)
      */
