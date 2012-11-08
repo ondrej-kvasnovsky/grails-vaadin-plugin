@@ -28,15 +28,15 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        compile 'com.vaadin:vaadin-server:7.0.0.beta5'
-        compile 'com.vaadin:vaadin-client-compiled:7.0.0.beta5'
-        compile 'com.vaadin:vaadin-client:7.0.0.beta5'
-        compile 'com.vaadin:vaadin-themes:7.0.0.beta5'
+        compile 'com.vaadin:vaadin-server:7.0.0.beta7'
+        compile 'com.vaadin:vaadin-client-compiled:7.0.0.beta7'
+        compile 'com.vaadin:vaadin-client:7.0.0.beta7'
+        compile 'com.vaadin:vaadin-themes:7.0.0.beta7'
     }
 
     plugins {
         build(":tomcat:$grailsVersion",
-              ":release:2.0.3",
+              ":release:2.0.4",
               ":rest-client-builder:1.0.2") {
             export = false
         }
