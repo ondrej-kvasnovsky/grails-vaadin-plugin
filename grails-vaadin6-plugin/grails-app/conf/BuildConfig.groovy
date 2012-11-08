@@ -48,7 +48,7 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        compile 'com.vaadin:vaadin:6.8.4'
+        compile 'com.vaadin:vaadin:6.8.5'
 
         build('org.grails.plugins:release:2.0.4') {  export = false }
     }
