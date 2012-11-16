@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='1.7.0-beta5.1' grailsVersion='2.0 &gt; *'>
+<plugin name='vaadin' version='1.7.0-beta9' grailsVersion='2.0 &gt; *'>
   <author>Ondrej Kvasnovsky</author>
   <authorEmail>ondrej.kvasnovsky@gmail.com</authorEmail>
   <title>Vaadin 7 Plugin</title>
@@ -22,10 +22,10 @@
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='com.vaadin' name='vaadin-server' version='7.0.0.beta5' />
-      <dependency group='com.vaadin' name='vaadin-client' version='7.0.0.beta5' />
-      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.0.beta5' />
-      <dependency group='com.vaadin' name='vaadin-themes' version='7.0.0.beta5' />
+      <dependency group='com.vaadin' name='vaadin-server' version='7.0.0.beta9' />
+      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.0.beta9' />
+      <dependency group='com.vaadin' name='vaadin-themes' version='7.0.0.beta9' />
+      <dependency group='com.vaadin' name='vaadin-client' version='7.0.0.beta9' />
     </compile>
   </dependencies>
   <plugins />
