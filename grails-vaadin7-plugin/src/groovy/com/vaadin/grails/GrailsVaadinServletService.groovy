@@ -18,7 +18,7 @@ class GrailsVaadinServletService extends VaadinServletService {
 
     @Override
     ClassLoader getClassLoader() {
-        GroovyClassLoader loader = Holders.grailsApplication.getClassLoader()
+        ClassLoader loader = Holders.grailsApplication.getClassLoader()
         return loader
     }
 }
