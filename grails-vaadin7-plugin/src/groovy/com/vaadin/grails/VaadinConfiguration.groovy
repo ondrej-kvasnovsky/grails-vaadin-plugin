@@ -20,7 +20,7 @@ class VaadinConfiguration {
 
     def getConfig() {
         if (configuration == null) {
-            GroovyClassLoader loader = Holders.grailsApplication.getClassLoader()
+            ClassLoader loader = Holders.grailsApplication.getClassLoader()
             ConfigObject config;
             try {
                 Class configFile = loader.loadClass(VAADIN_CONFIG_FILE);
