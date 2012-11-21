@@ -46,23 +46,26 @@
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0.RC1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0.RC1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0.RC1" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0.RC2" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0.RC2" level="application" />
     <orderEntry type="module-library">
       <library name="Grails User Library (vaadin-inplacePlugin)">
         <CLASSES>
           <root url="file://$MODULE_DIR$/../grails-vaadin7-plugin/lib" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.validation/validation-api/jars/validation-api-1.0.0.GA-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.0.0.beta2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jsoup/jsoup/jars/jsoup-1.6.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.5.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.commons/commons-jexl/jars/commons-jexl-2.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-theme-compiler/jars/vaadin-theme-compiler-7.0.0.beta2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.json/json/jars/json-20080701.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.0.0.beta2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.0.0.beta9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.0.0.beta9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.0.0.beta9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-theme-compiler/jars/vaadin-theme-compiler-7.0.0.beta9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared-deps/jars/vaadin-shared-deps-1.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.0.0.beta9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.0.0.beta9.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.liquibase/liquibase-core/jars/liquibase-core-2.0.5.jar!/" />
         </CLASSES>
         <JAVADOC />
