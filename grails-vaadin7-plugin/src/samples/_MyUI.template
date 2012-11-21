@@ -15,14 +15,18 @@ class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
 
+		VerticalLayout layout = new VerticalLayout()
+
         String homeLabel = Grails.i18n("default.home.label")
         Label label = new Label(homeLabel)
-        addComponent(label)
+        layout.addComponent(label)
 
         // example of how to get Grails service and call a method
         // List<User> users = Grails.get(UserService).getListOfUsers()
         //    for (User user : users) {
-        //    addComponent(new Label(user.name))
+        //    	layout.addComponent(new Label(user.name))
         // }
+
+		setContent(layout)
     }
 }
