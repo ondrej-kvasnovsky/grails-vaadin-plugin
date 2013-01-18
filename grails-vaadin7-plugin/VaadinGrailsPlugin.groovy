@@ -9,12 +9,10 @@ import com.vaadin.grails.VaadinConfiguration
  */
 class VaadinGrailsPlugin {
 
-    private static final transient Logger log = LoggerFactory.getLogger(this)
-
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
     // the plugin version
-    def version = "1.7.0-beta11"
+    def version = "1.7.0-rc1"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
