@@ -28,10 +28,10 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        compile 'com.vaadin:vaadin-server:7.0.0.rc1'
-        compile 'com.vaadin:vaadin-client-compiled:7.0.0.rc1'
-        compile 'com.vaadin:vaadin-client:7.0.0.rc1'
-        compile 'com.vaadin:vaadin-themes:7.0.0.rc1'
+        compile 'com.vaadin:vaadin-server:7.0.0.rc2'
+        compile 'com.vaadin:vaadin-client-compiled:7.0.0.rc2'
+        compile 'com.vaadin:vaadin-client:7.0.0.rc2'
+        compile 'com.vaadin:vaadin-themes:7.0.0.rc2'
     }
 
     plugins {

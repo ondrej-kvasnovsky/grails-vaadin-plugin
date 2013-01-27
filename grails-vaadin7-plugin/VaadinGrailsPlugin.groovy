@@ -12,7 +12,7 @@ class VaadinGrailsPlugin {
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
     // the plugin version
-    def version = "1.7.0-rc1"
+    def version = "1.7.0-rc2"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
@@ -30,13 +30,13 @@ class VaadinGrailsPlugin {
         '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/vaadin"
+    def documentation = "http://vaadinongrails.com"
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
     def license = "APACHE"
 
     // Details of company behind the plugin (if there is one)
-    def organization = [name: "Ondrej Kvasnovsky", url: "http://ondrej-kvasnovsky.blogspot.com"]
+    def organization = [name: "Ondrej Kvasnovsky", url: "http://vaadinongrails.com"]
 
     // Any additional developers beyond the author specified above.
     // def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
