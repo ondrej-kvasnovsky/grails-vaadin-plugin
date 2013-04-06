@@ -1,5 +1,3 @@
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import com.vaadin.grails.VaadinConfiguration
 
 /**
@@ -12,7 +10,7 @@ class VaadinGrailsPlugin {
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
     // the plugin version
-    def version = "1.7.1"
+    def version = "1.7.3"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
