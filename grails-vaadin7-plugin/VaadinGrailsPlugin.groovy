@@ -10,7 +10,7 @@ class VaadinGrailsPlugin {
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
     // the plugin version
-    def version = "1.7.4"
+    def version = "1.7.5"
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
@@ -24,7 +24,7 @@ class VaadinGrailsPlugin {
     def author = "Ondrej Kvasnovsky"
     def authorEmail = "ondrej.kvasnovsky@gmail.com"
     def description = '''
-        Grails plugin integrating Vaadin 7 into the grails project.
+        Grails plugin integrating Vaadin 7 into the Grails project.
         '''
 
     // URL to the plugin's documentation
