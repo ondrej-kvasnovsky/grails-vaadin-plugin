@@ -1,9 +1,9 @@
-<plugin name='vaadin' version='1.7.1' grailsVersion='2.0 &gt; *'>
+<plugin name='vaadin' version='1.7.6' grailsVersion='2.0 &gt; *'>
   <author>Ondrej Kvasnovsky</author>
   <authorEmail>ondrej.kvasnovsky@gmail.com</authorEmail>
   <title>Vaadin 7 Plugin</title>
   <description>
-        Grails plugin integrating Vaadin 7 into the grails project.
+        Grails plugin integrating Vaadin 7 into the Grails project.
         </description>
   <documentation>http://vaadinongrails.com</documentation>
   <type>VaadinGrailsPlugin</type>
@@ -22,15 +22,15 @@
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='com.vaadin' name='vaadin-themes' version='7.0.1' />
-      <dependency group='com.vaadin' name='vaadin-server' version='7.0.1' />
-      <dependency group='com.vaadin' name='vaadin-client' version='7.0.1' />
-      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.1' />
+      <dependency group='com.vaadin' name='vaadin-themes' version='7.0.6' />
+      <dependency group='com.vaadin' name='vaadin-server' version='7.0.6' />
+      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.0.6' />
+      <dependency group='com.vaadin' name='vaadin-client' version='7.0.6' />
     </compile>
   </dependencies>
   <plugins>
     <build>
-      <plugin group='org.grails.plugins' name='tomcat' version='2.2.0.RC2' />
+      <plugin group='org.grails.plugins' name='tomcat' version='2.2.2' />
     </build>
   </plugins>
   <runtimePluginRequirements />
