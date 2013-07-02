@@ -14,3 +14,4 @@ web-app/WEB-INF/classes
 grails-vaadin7-demo/out/production
 grails-vaadin7-plugin/web-app
 grails-vaadin7-plugin/grails-app/i18n
+*.iml
