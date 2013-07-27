@@ -9,6 +9,7 @@ import grails.vaadin7.demo.UserService
 import grails.vaadin7.demo.User
 import com.vaadin.grails.Grails
 import com.vaadin.ui.VerticalLayout
+import grails.plugins.springsecurity.SpringSecurityService
 
 /**
  *
@@ -19,6 +20,8 @@ class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        println Grails.get(SpringSecurityService)
+
         List<User> users = Grails.get(UserService).getListOfUsers()
         VerticalLayout layout = new VerticalLayout()
         layout.addComponent(new Label(Grails.i18n("aloha")))
