@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='7.1.1' grailsVersion='2.0 &gt; *'>
+<plugin name='vaadin' version='7.1.5' grailsVersion='2.0 &gt; *'>
   <author>Ondrej Kvasnovsky</author>
   <authorEmail>ondrej.kvasnovsky@gmail.com</authorEmail>
   <title>Vaadin 7 Plugin</title>
@@ -8,31 +8,4 @@
   <documentation>http://vaadinongrails.com</documentation>
   <type>VaadinGrailsPlugin</type>
   <resources />
-  <repositories>
-    <repository name='grailsCentral' url='http://grails.org/plugins' />
-    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
-    <repository name='http://snapshots.repository.codehaus.org' url='http://snapshots.repository.codehaus.org/' />
-    <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
-    <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
-    <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
-    <repository name='http://oss.sonatype.org/content/repositories/vaadin-snapshots' url='http://oss.sonatype.org/content/repositories/vaadin-snapshots/' />
-    <repository name='http://maven.vaadin.com/vaadin-addons' url='http://maven.vaadin.com/vaadin-addons/' />
-    <repository name='http://repo.springsource.org/release' url='http://repo.springsource.org/release/' />
-    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
-  </repositories>
-  <dependencies>
-    <compile>
-      <dependency group='com.vaadin' name='vaadin-client-compiled' version='7.1.1' />
-      <dependency group='com.vaadin' name='vaadin-server' version='7.1.1' />
-      <dependency group='com.vaadin' name='vaadin-client' version='7.1.1' />
-      <dependency group='com.vaadin' name='vaadin-themes' version='7.1.1' />
-    </compile>
-  </dependencies>
-  <plugins>
-    <build>
-      <plugin group='org.grails.plugins' name='tomcat' version='2.2.0.RC2' />
-    </build>
-  </plugins>
-  <runtimePluginRequirements />
-  <behavior />
 </plugin>
