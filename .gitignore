@@ -9,6 +9,7 @@ web-app/WEB-INF/classes
 *.class
 *.war
 *.zip
+*.zip.sha1
 *.log
 .idea/
 grails-vaadin7-demo/out/production
