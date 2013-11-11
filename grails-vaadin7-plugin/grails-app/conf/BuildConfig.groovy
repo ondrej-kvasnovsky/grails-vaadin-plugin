@@ -23,15 +23,13 @@ grails.project.dependency.resolution = {
         mavenRepo "http://oss.sonatype.org/content/repositories/vaadin-snapshots"
         mavenRepo "http://maven.vaadin.com/vaadin-addons"
         mavenRepo "http://repo.springsource.org/release"
-
-        grailsRepo "http://grails.org/plugins"
     }
 
     dependencies {
-        compile 'com.vaadin:vaadin-server:7.1.5'
-        compile 'com.vaadin:vaadin-client-compiled:7.1.5'
-        compile 'com.vaadin:vaadin-client:7.1.5'
-        compile 'com.vaadin:vaadin-themes:7.1.5'
+        compile 'com.vaadin:vaadin-server:7.1.7'
+        compile 'com.vaadin:vaadin-client-compiled:7.1.7'
+        compile 'com.vaadin:vaadin-client:7.1.7'
+        compile 'com.vaadin:vaadin-themes:7.1.7'
     }
 
     plugins {
