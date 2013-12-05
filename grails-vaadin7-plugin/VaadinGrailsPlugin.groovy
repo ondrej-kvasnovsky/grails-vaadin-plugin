@@ -9,7 +9,7 @@ class VaadinGrailsPlugin {
 
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
-    def version = "7.1.8.1"
+    def version = "7.1.8.2"
     def grailsVersion = "2.0 > *"
     def pluginExcludes = [
             "grails-app/views/error.gsp"
@@ -105,12 +105,14 @@ class VaadinGrailsPlugin {
             }
         }
 
-        List<String> mappingExtras = config.mappingExtras
-        mappingExtras.eachWithIndex { String exclude, int i ->
-            lastServletMapping + {
-                "servlet-mapping" {
-                    "servlet-name"("grails")
-                    "url-pattern"(exclude)
+        def mappingExtras = config.mappingExtras
+        if (mappingExtras instanceof List) {
+            mappingExtras.eachWithIndex { String exclude, int i ->
+                lastServletMapping + {
+                    "servlet-mapping" {
+                        "servlet-name"("grails")
+                        "url-pattern"(exclude)
+                    }
                 }
             }
         }
