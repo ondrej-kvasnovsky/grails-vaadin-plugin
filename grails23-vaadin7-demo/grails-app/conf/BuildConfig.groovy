@@ -68,7 +68,7 @@ grails.project.dependency.resolution = {
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
-        compile ":vaadin:7.1.8.1"
+        compile ":vaadin:7.1.8.2"
         compile ":console:1.2"
 
     }
