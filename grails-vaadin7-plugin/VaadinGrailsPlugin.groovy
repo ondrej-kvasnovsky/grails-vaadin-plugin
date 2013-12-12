@@ -54,6 +54,7 @@ class VaadinGrailsPlugin {
         def applicationServlet = config.servletClass ?: DEFAULT_SERVLET
         def servletName = "VaadinServlet "
         def widgetset = config.widgetset
+        def asyncSupported = config.asyncSupported
 
         def servlets = xml."servlet"
 
@@ -80,6 +81,10 @@ class VaadinGrailsPlugin {
                     }
 
                     "load-on-startup"("1")
+                    
+                    if (asyncSupported) {
+                        "async-supported"("1")
+                    }
                 }
             }
 
