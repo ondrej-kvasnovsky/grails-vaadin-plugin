@@ -15,6 +15,9 @@ vaadin {
     // servletClass = "com.mycompany.MyGrailsAwareApplicationServlet"
 
     productionMode = false
+    
+    // Uncomment this to enable asynchronous communication, useful for vaadin-push
+    // asyncSupported = true
 }
 
 environments {
