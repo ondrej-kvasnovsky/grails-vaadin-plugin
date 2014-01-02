@@ -15,6 +15,9 @@ vaadin {
     // servletClass = "com.mycompany.MyGrailsAwareApplicationServlet"
 
     productionMode = false
+
+    themes = ['sample']
+    sassCompile = '7.1.9'
 }
 
 environments {
