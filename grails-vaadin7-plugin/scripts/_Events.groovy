@@ -18,8 +18,8 @@ eventCreateWarStart = { name, stagingDir ->
         sassCompile = '7.1.9'
     }
 
-    if (Environment.PRODUCTION == Environment.current) {
-        // compile SCSS when running 'grails prod war'
+    if (config?.productionMode) {
+        // compile SCSS when in production mode... aka Vaadin does no on-the-fly-compilation
         ant.echo('SASS compilation: Starting')
         ant.echo("SASS compilation: Themes for compilation: ${config?.themes}")
         if (config?.themes instanceof List) {
