@@ -83,7 +83,7 @@ class VaadinGrailsPlugin {
                     "load-on-startup"("1")
                     
                     if (asyncSupported) {
-                        "async-supported"("1")
+                        "async-supported"("true")
                     }
                 }
             }
