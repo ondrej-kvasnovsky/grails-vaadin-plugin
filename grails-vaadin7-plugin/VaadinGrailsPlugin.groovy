@@ -80,7 +80,7 @@ class VaadinGrailsPlugin {
                             "param-value"(widgetset)
                         }
                     }
-                    for(def name : initParams.keySet()){
+                    for (def name : initParams?.keySet()) {
                         "init-param" {
                             "param-name"(name)
                             "param-value"(initParams.get(name))
