@@ -55,6 +55,7 @@ class VaadinGrailsPlugin {
         def servletName = "VaadinServlet "
         def widgetset = config.widgetset
         def asyncSupported = config.asyncSupported
+        Map initParams = config.initParams
 
         def servlets = xml."servlet"
 
@@ -79,7 +80,12 @@ class VaadinGrailsPlugin {
                             "param-value"(widgetset)
                         }
                     }
-
+                    for (def name : initParams?.keySet()) {
+                        "init-param" {
+                            "param-name"(name)
+                            "param-value"(initParams.get(name))
+                        }
+                    }
                     "load-on-startup"("1")
                     
                     if (asyncSupported) {
