@@ -69,10 +69,10 @@ grails.project.dependency.resolution = {
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
-//        compile ":vaadin:7.1.10"
+        compile ":vaadin:7.1.10.1"
         compile ":console:1.2"
 
     }
 }
 
-grails.plugin.location.'vaadin' = "../grails-vaadin7-plugin"
+//grails.plugin.location.'vaadin' = "../grails-vaadin7-plugin"
