@@ -25,7 +25,7 @@ grails.project.dependency.resolution = {
         mavenRepo "http://repo.springsource.org/release"
     }
 
-    vaadinVersion = "7.1.10"
+    vaadinVersion = "7.1.11"
 
     dependencies {
         compile "com.vaadin:vaadin-server:${vaadinVersion}"
