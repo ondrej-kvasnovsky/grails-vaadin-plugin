@@ -22,6 +22,7 @@ class GrailsVaadinServlet extends VaadinServlet {
     @Override
     protected VaadinServletService createServletService(DeploymentConfiguration deploymentConfiguration) {
         GrailsVaadinServletService service = new GrailsVaadinServletService(this, deploymentConfiguration)
+        service.init()
         return service
     }
 
