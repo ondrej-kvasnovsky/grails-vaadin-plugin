@@ -31,6 +31,7 @@ grails.project.dependency.resolution = {
         compile "com.vaadin:vaadin-server:${vaadinVersion}"
         compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
         compile "com.vaadin:vaadin-client:${vaadinVersion}"
+        compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
         compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     }
 

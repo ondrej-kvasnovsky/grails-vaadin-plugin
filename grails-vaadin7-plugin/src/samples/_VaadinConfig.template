@@ -23,6 +23,15 @@ vaadin {
     // themes = ['sample']
     // You can specify exact version of Vaadin for SASS compilation
     // sassCompile = '7.1.9'
+
+    // Use your own widgetset (e.g. include addons)
+    // - add the depedencies in BuildConfig.groovy
+    // - create src/java/com/mycompany/widgetset.gwt.xml 
+    //   and add the widgetset from the addon there
+    // - run ``grails vaadin-compile-widgetset`` afterwards 
+    //   (and after major Vaadin version changes)
+    // Unless set the default from Vaadin is used
+    // widgetset = 'com.mycompany.widgetset'
 }
 
 environments {
