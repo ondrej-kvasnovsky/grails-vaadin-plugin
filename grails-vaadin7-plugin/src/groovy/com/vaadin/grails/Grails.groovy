@@ -49,7 +49,7 @@ class Grails {
      */
     public static MessageSource getMessageSource() {
         ApplicationContext context = getApplicationContext()
-        MessageSource res = context.getBean(MessageSource)
+        MessageSource res = context.getBean('messageSource')
         return res
     }
 
