@@ -18,3 +18,4 @@ grails-vaadin7-plugin/grails-app/i18n
 *.iml
 .classpath
 .project
+grails-vaadin7-plugin/out
