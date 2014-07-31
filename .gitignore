@@ -19,3 +19,6 @@ grails-vaadin7-plugin/grails-app/i18n
 .classpath
 .project
 grails-vaadin7-plugin/out
+grailsw
+grailsw.bat
+*.jar
