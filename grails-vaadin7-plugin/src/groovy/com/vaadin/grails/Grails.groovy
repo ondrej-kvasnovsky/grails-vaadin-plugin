@@ -32,6 +32,20 @@ class Grails {
     }
 
     /**
+     * Returns bean from application context. Example use: Grails.get('dataSource')
+     *
+     * @param name of the bean
+     * @return bean from the context
+     * @throws BeansException
+     */
+    public static <T> T get(final String name) throws BeansException {
+        ApplicationContext context = getApplicationContext()
+        T res = context.getBean(name)
+        return res
+    }
+
+
+    /**
      * Returns Grails application context.
      *
      * @return grails application context

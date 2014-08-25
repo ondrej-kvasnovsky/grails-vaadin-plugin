@@ -11,9 +11,7 @@ class VaadinGrailsPlugin {
 
     def version = "7.2.5"
     def grailsVersion = "2.0 > *"
-    def pluginExcludes = [
-            "grails-app/views/error.gsp"
-    ]
+    def pluginExcludes = []
 
     def title = "Vaadin 7 Plugin"
     def author = "Ondrej Kvasnovsky"

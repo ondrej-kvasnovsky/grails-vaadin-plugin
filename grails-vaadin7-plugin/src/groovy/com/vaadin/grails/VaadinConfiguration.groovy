@@ -21,7 +21,6 @@ class VaadinConfiguration {
     def getConfig() {
         if (configuration == null) {
             ClassLoader loader = Holders.grailsApplication.getClassLoader()
-            ConfigObject config;
             try {
                 Class configFile = loader.loadClass(VAADIN_CONFIG_FILE);
                 configuration = new ConfigSlurper(Environment.current.name).parse(configFile);
