@@ -1,5 +1,3 @@
-import com.vaadin.grails.VaadinConfiguration
-import grails.util.Environment
 import org.codehaus.gant.GantState
 
 eventWarStart = { warName ->
@@ -9,7 +7,7 @@ eventCreateWarStart = { name, stagingDir ->
     GantState.verbosity = GantState.VERBOSE
     ant.logger.setMessageOutputLevel(GantState.verbosity)
 
-    def config = new VaadinConfiguration().config
+    def config = classLoader.loadClass('com.vaadin.grails.VaadinConfiguration').newInstance(classLoader).config
     ant.echo("Vaadin plugin config: $config")
 
     String sassCompile = config.sassCompile
