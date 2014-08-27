@@ -1,4 +1,5 @@
 import com.vaadin.grails.VaadinConfiguration
+import grails.util.Holders
 
 /**
  * Plugin that integrates Grails with Vaadin 7.
@@ -9,7 +10,7 @@ class VaadinGrailsPlugin {
 
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
 
-    def version = "7.2.5"
+    def version = "7.2.6"
     def grailsVersion = "2.0 > *"
     def pluginExcludes = []
 
@@ -26,7 +27,7 @@ class VaadinGrailsPlugin {
     def issueManagement = [system: "JIRA", url: "http://jira.grails.org/browse/GPVAADIN"]
     def scm = [url: "https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin"]
 
-    VaadinConfiguration vaadinConfiguration = new VaadinConfiguration()
+    VaadinConfiguration vaadinConfiguration = new VaadinConfiguration(Holders.grailsApplication.classLoader)
 
     def doWithWebDescriptor = { xml ->
 
