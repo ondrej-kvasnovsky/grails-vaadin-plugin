@@ -1,10 +1,7 @@
 package com.vaadin.grails
-
-import grails.util.Holders
 import grails.util.Environment
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
 /**
  * Manages user defined VaadinConfig class.
  *
@@ -18,9 +15,14 @@ class VaadinConfiguration {
 
     ConfigObject configuration = null;
 
+    private ClassLoader loader
+
+    VaadinConfiguration(ClassLoader classLoader) {
+        loader = classLoader
+    }
+
     def getConfig() {
         if (configuration == null) {
-            ClassLoader loader = Holders.grailsApplication.getClassLoader()
             try {
                 Class configFile = loader.loadClass(VAADIN_CONFIG_FILE);
                 configuration = new ConfigSlurper(Environment.current.name).parse(configFile);
