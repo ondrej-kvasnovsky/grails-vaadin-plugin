@@ -33,6 +33,7 @@ grails.project.dependency.resolution = {
         compile "com.vaadin:vaadin-client:${vaadinVersion}"
         compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
         compile "com.vaadin:vaadin-themes:${vaadinVersion}"
+        compile "com.vaadin:vaadin-push:${vaadinVersion}"
 
         compile 'commons-dbcp:commons-dbcp:1.4'
     }
