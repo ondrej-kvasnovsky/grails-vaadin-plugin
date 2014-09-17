@@ -100,12 +100,10 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-plus/jars/jetty-plus-8.1.12.v20130726.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-annotations/jars/jetty-annotations-8.1.12.v20130726.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.google/android-json/jars/android-json-0.0.20131108.vaadin1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.google/guava/jars/guava-16.0.1.vaadin1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.streamhtmlparser/streamhtmlparser-jsilver/jars/streamhtmlparser-jsilver-0.0.10.vaadin1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.11.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.flute/flute/jars/flute-1.3.0.gg2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-sass-compiler/jars/vaadin-sass-compiler-0.9.6.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler-deps/jars/vaadin-client-compiler-deps-1.1.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.ibm.icu/icu4j/jars/icu4j-50.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar!/" />
@@ -116,12 +114,17 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.mail.glassfish/orbits/javax.mail.glassfish-1.4.1.v201005082020.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-pool/commons-pool/jars/commons-pool-1.5.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-dbcp/commons-dbcp/jars/commons-dbcp-1.4.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.2.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.2.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.2.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.2.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.2.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.2.6.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.json/json/jars/json-0.0.20080701.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-sass-compiler/jars/vaadin-sass-compiler-0.9.10.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.slf4j/vaadin-slf4j-jdk14/jars/vaadin-slf4j-jdk14-1.6.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.atmosphere/atmosphere-runtime/bundles/atmosphere-runtime-2.1.2.vaadin3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
