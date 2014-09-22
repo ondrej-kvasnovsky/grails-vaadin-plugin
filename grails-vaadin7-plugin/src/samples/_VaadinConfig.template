@@ -32,6 +32,17 @@ vaadin {
     //   (and after major Vaadin version changes)
     // Unless set the default from Vaadin is used
     // widgetset = 'com.mycompany.widgetset'
+
+    compile {
+        //usePathJar = true //if you have problem with long classpath and vaadin-compile-widgetset on windows, uncomment this line
+        //classPathRegExp="(?ismx)([^;]*(vaadin|gwt-dev|ant|sac)[^;]*);" //Regex pattern including jar contains following words vaadin|gwt-dev|ant|sac, used by default for path jar
+
+        //memory settings
+        //antMaxMemory='512m'
+        //gwtCompilerXss='1024k'
+
+        //workers=4 //by default 4 parallel workers threads used for compile
+    }
 }
 
 environments {
