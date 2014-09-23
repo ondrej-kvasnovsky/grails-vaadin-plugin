@@ -8,5 +8,3 @@ if (!(new File("${basedir}/grails-app/conf/VaadinConfig.groovy")).exists()) {
     ant.copy(file: "${pluginBasedir}/src/samples/_VaadinConfig.template",
             tofile: "${basedir}/grails-app/conf/VaadinConfig.groovy")
 }
-
-ant.mkdir(dir: "${basedir}/grails-app/vaadin")

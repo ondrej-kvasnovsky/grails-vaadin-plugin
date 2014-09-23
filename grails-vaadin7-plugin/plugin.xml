@@ -1,4 +1,4 @@
-<plugin name='vaadin' version='7.3.0.1' grailsVersion='2.0 &gt; *'>
+<plugin name='vaadin' version='7.3.0.1-SNAPSHOT' grailsVersion='2.0 &gt; *'>
   <author>Ondrej Kvasnovsky</author>
   <authorEmail>ondrej.kvasnovsky@gmail.com</authorEmail>
   <title>Vaadin 7 Plugin</title>

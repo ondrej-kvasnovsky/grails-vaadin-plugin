@@ -13,7 +13,7 @@ eventCreateWarStart = { name, stagingDir ->
     String sassCompile = config.sassCompile
     if (!sassCompile) {
         // if Vaadin version is not provided, use some it should be fine just for the SASS compilation
-        sassCompile = '7.1.9'
+        sassCompile = '7.3.0'
     }
 
     if (config?.productionMode) {
@@ -39,7 +39,7 @@ eventCreateWarStart = { name, stagingDir ->
                         ant.echo("SASS compilation: Temp file for Vaadin libraries: $tempUnzip")
                         ant.mkdir(dir: tempUnzip)
 
-                        String vaadinAllInSource = "http://vaadin.com/download/release/7.1/$sassCompile/vaadin-all-${sassCompile}.zip"
+                        String vaadinAllInSource = "http://vaadin.com/download/release/7.3/$sassCompile/vaadin-all-${sassCompile}.zip"
                         ant.echo("SASS compilation: $vaadinAllInSource")
                         String vaadinAllIn = temp.absolutePath + "/vaadin-all-${sassCompile}.zip"
                         ant.echo("SASS compilation: $vaadinAllIn")
