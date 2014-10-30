@@ -2,6 +2,7 @@ package com.vaadin.grails
 
 import org.springframework.beans.BeansException
 import grails.util.Holders
+import org.springframework.beans.factory.NoUniqueBeanDefinitionException
 import org.springframework.context.MessageSource
 import org.springframework.context.ApplicationContext
 import org.springframework.context.i18n.LocaleContextHolder
@@ -144,5 +145,33 @@ class Grails {
             res = "[" + key + "]"
         }
         return res
+    }
+
+    /**
+     * Returns an unique bean name for the specified type.
+     *
+     * @param type
+     * @return
+     * @throws NoUniqueBeanDefinitionException
+     */
+    public static String getUniqueBeanName(Class type) throws NoUniqueBeanDefinitionException {
+        def beanNames = applicationContext.getBeanNamesForType(type)
+        if (beanNames.size() > 1) {
+            throw new NoUniqueBeanDefinitionException(type, beanNames)
+        }
+        beanNames.length > 0 ? beanNames.first() : null
+    }
+
+    /**
+     * Returns an unique bean for the specified type.
+     *
+     * @param type
+     * @param args
+     * @return
+     * @throws NoUniqueBeanDefinitionException
+     */
+    public static def <T> T getUniqueBean(Class<? super T> type, Object... args = null) throws NoUniqueBeanDefinitionException {
+        def beanName = getUniqueBeanName(type)
+        applicationContext.getBean(beanName, args)
     }
 }
