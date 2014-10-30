@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="Grails" name="Grails" removed="false">
+        <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/web-app/WEB-INF/applicationContext.xml</file>
         </fileset>
       </configuration>
@@ -12,16 +12,13 @@
       <configuration>
         <webroots>
           <root url="file://$MODULE_DIR$/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/grails-app/views" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map>
-          <unit-entry name="Gorm" />
-        </datasource-map>
+        <datasource-map />
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -29,110 +26,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/utils" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/i18n" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/controllers" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library name="Grails User Library (grails-vaadin7-plugin)">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/lib" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.validation/validation-api/jars/validation-api-1.0.0.GA-sources.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jsoup/jsoup/jars/jsoup-1.6.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/nekohtml/nekohtml/jars/nekohtml-1.9.6.2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/nekohtml/xercesMinimal/jars/xercesMinimal-1.9.6.2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven.wagon/wagon-http-shared/jars/wagon-http-shared-1.0-beta-6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven.wagon/wagon-http-lightweight/jars/wagon-http-lightweight-1.0-beta-6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven.wagon/wagon-file/jars/wagon-file-1.0-beta-6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-error-diagnostics/jars/maven-error-diagnostics-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-plugin-registry/jars/maven-plugin-registry-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-profile/jars/maven-profile-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-settings/jars/maven-settings-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-project/jars/maven-project-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-model/jars/maven-model-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/backport-util-concurrent/backport-util-concurrent/jars/backport-util-concurrent-3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven.wagon/wagon-provider-api/jars/wagon-provider-api-1.0-beta-6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-repository-metadata/jars/maven-repository-metadata-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-artifact-manager/jars/maven-artifact-manager-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-artifact/jars/maven-artifact-2.2.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.plexus/plexus-interpolation/jars/plexus-interpolation-1.11.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.plexus/plexus-utils/jars/plexus-utils-1.5.15.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.plexus/plexus-container-default/jars/plexus-container-default-1.0-alpha-9-stable-1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/classworlds/classworlds/jars/classworlds-1.1-alpha-2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-ant-tasks/jars/maven-ant-tasks-2.1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/junit/junit-dep/jars/junit-dep-4.10.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.james/apache-mime4j/jars/apache-mime4j-0.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jdesktop/swing-worker/jars/swing-worker-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/ant/ant-launcher/jars/ant-launcher-1.6.5.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/ant/ant/jars/ant-1.6.5.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-collections/commons-collections/jars/commons-collections-3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-jndi/jars/jetty-jndi-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-io/jars/jetty-io-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-http/jars/jetty-http-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-continuation/jars/jetty-continuation-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.servlet/orbits/javax.servlet-3.0.0.v201112011016.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-server/jars/jetty-server-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-security/jars/jetty-security-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-servlet/jars/jetty-servlet-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-io/commons-io/jars/commons-io-2.4.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-codec/commons-codec/jars/commons-codec-1.8.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-client/jars/jetty-client-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-servlets/jars/jetty-servlets-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/org.objectweb.asm/orbits/org.objectweb.asm-3.1.0.v200803061910.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.annotation/orbits/javax.annotation-1.1.0.v201108011116.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-util/jars/jetty-util-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-xml/jars/jetty-xml-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-webapp/jars/jetty-webapp-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.transaction/orbits/javax.transaction-1.1.1.v201105210645.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-plus/jars/jetty-plus-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty/jetty-annotations/jars/jetty-annotations-8.1.12.v20130726.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.google/guava/jars/guava-16.0.1.vaadin1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.streamhtmlparser/streamhtmlparser-jsilver/jars/streamhtmlparser-jsilver-0.0.10.vaadin1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.cssparser/cssparser/jars/cssparser-0.9.11.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.flute/flute/jars/flute-1.3.0.gg2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler-deps/jars/vaadin-client-compiler-deps-1.1.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.ibm.icu/icu4j/jars/icu4j-50.1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.nekohtml/nekohtml/jars/nekohtml-1.9.19.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.httpcomponents/httpmime/jars/httpmime-4.3.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.activation/orbits/javax.activation-1.1.0.v201105071233.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jetty.orbit/javax.mail.glassfish/orbits/javax.mail.glassfish-1.4.1.v201005082020.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-pool/commons-pool/jars/commons-pool-1.5.4.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-dbcp/commons-dbcp/jars/commons-dbcp-1.4.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.json/json/jars/json-0.0.20080701.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-sass-compiler/jars/vaadin-sass-compiler-0.9.10.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.0.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.slf4j/vaadin-slf4j-jdk14/jars/vaadin-slf4j-jdk14-1.6.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.atmosphere/atmosphere-runtime/bundles/atmosphere-runtime-2.1.2.vaadin3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module" module-name="grails-vaadin7-plugin-grailsPlugins" />
-    <orderEntry type="library" name="grails-2.4.3" level="application" />
+    <orderEntry type="library" name="grails-2.4.2" level="application" />
   </component>
 </module>
 
