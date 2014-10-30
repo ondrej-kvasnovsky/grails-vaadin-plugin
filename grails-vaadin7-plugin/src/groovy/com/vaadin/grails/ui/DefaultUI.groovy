@@ -8,6 +8,11 @@ import org.apache.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 
+/**
+ * Default implementation for {@link com.vaadin.ui.UI}.
+ *
+ * @author Stephan Grundner
+ */
 class DefaultUI extends UI {
 
     private static final Logger log = Logger.getLogger(DefaultUI)

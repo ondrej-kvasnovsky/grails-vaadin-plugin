@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 import java.util.concurrent.ConcurrentHashMap
 
+/**
+ * Default implementation for {@link com.vaadin.server.UIProvider}.
+ *
+ * @author Stephan Grundner
+ */
 @Primary
 @Component("uiProvider")
 @Scope("prototype")

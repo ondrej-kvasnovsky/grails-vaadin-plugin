@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 /**
- * The default view provider.
+ * Default implementation for {@link com.vaadin.navigator.ViewProvider}.
  *
  * @author Stephan Grundner
  */

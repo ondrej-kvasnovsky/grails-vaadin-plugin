@@ -13,6 +13,11 @@ import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 
+/**
+ * Default implementation for {@link com.vaadin.navigator.Navigator}.
+ *
+ * @author Stephan Grundner
+ */
 @Primary
 @Component("navigator")
 @Scope("prototype")

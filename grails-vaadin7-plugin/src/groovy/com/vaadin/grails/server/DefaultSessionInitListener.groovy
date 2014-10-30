@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 
+/**
+ * Default implementation for {@link com.vaadin.server.SessionInitListener}.
+ *
+ * @author Stephan Grundner
+ */
 @Primary
 @Component("sessionInitListener")
 @Scope("prototype")

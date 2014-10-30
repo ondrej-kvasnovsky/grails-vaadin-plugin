@@ -12,7 +12,7 @@ import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 
 /**
- * The default servlet implementation.
+ * Default implementation for {@link com.vaadin.server.VaadinServlet}.
  *
  * @author Stephan Grundner
  */
