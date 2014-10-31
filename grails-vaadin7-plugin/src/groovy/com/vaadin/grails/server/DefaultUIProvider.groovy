@@ -40,17 +40,6 @@ class DefaultUIProvider extends UIProvider {
             path = path.substring(1)
         }
 
-        while (true) {
-            if (typesByPaths.containsKey(path)) {
-                break
-            }
-            def i = path.lastIndexOf("/")
-            if (i == -1) {
-                break
-            }
-            path = path.substring(0, i)
-        }
-
         typesByPaths.get(path)
     }
 
