@@ -55,7 +55,7 @@ grails.project.dependency.resolution = {
 
     plugins {
 
-        compile ':vaadin:7.3.0.1-SNAPSHOT'
+//        compile ':vaadin:7.3.0.1-SNAPSHOT'
 
         // plugins for the build system only
         build ":tomcat:7.0.55"
@@ -79,4 +79,4 @@ grails.project.dependency.resolution = {
     }
 }
 
-//grails.plugin.location.'vaadin' = "../grails-vaadin7-plugin"
+grails.plugin.location.'vaadin' = "../grails-vaadin7-plugin"

@@ -19,7 +19,9 @@
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="Gorm" />
+        </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -124,6 +126,14 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.2.jar!/" />
           <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.atmosphere/atmosphere-runtime/bundles/atmosphere-runtime-2.1.2.vaadin6.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.3.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -131,6 +141,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="grails-vaadin7-plugin-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.4.3" level="application" />
   </component>
 </module>
 
