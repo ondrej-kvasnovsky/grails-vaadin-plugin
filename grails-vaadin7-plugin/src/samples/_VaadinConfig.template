@@ -11,11 +11,22 @@ vaadin {
     //         '/console/*'
     // ]
 
+    // This is optional, all packages will get scanned by default.
+    // packages = ['com.mycompany.vaadin']
+
+    // This is optional, default is "com.vaadin.grails.server.DefaultUIProvider".
+    // uiProvider = "com.mycompany.MyGrailsAwareUIProvider"
+
     // This is optional because the servlet is provided by default.
     // servletClass = "com.mycompany.MyGrailsAwareApplicationServlet"
 
     productionMode = false
-    
+
+    // Uncomment this to activate Open Session in View for Hibernate 3
+    // openSessionInViewFilter = 'org.springframework.orm.hibernate3.support.OpenSessionInViewFilter'
+    // ...or this for Hibernate 4
+    // openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
+
     // Uncomment this to enable asynchronous communication, useful for vaadin-push
     // asyncSupported = true
 

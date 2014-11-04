@@ -1,4 +1,5 @@
 import com.vaadin.grails.VaadinConfiguration
+import com.vaadin.grails.spring.PackageAwareBeanNameGenerator
 import grails.util.Holders
 
 /**
@@ -8,7 +9,8 @@ import grails.util.Holders
  */
 class VaadinGrailsPlugin {
 
-    private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
+//    private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
+    private static final String DEFAULT_SERVLET = "com.vaadin.grails.server.DefaultServlet"
 
     def version = "7.3.3"
     def grailsVersion = "2.0 > *"
@@ -33,8 +35,27 @@ class VaadinGrailsPlugin {
 
         def config = vaadinConfiguration.getConfig()
 
-        if (!config || !(config.mapping)) {
+//        if (!config || !(config.mapping)) {
+        if (!config) {
             return
+        }
+
+        def openSessionInViewFilter = config.openSessionInViewFilter
+
+        println "openSessionInViewFilter: ${openSessionInViewFilter}"
+        if (!openSessionInViewFilter) {
+            def filter = xml."filter"
+            filter[filter.size() - 1] + {
+                "filter-name"("openSessionInView")
+                "filter-class"(openSessionInViewFilter)
+            }
+
+            def filterMapping = xml."filter-mapping"
+            filterMapping[filterMapping.size() - 1] + {
+                "filter-name"("openSessionInView")
+                "url-pattern"("/*")
+            }
+            println "using openSessionInViewFilter!"
         }
 
         def vaadinProductionMode = config.productionMode
@@ -49,6 +70,14 @@ class VaadinGrailsPlugin {
         }
 
         Map mapping = config.mapping
+
+        boolean usingUIProvider = false
+
+        if (mapping.isEmpty()) {
+            def uiProvider = config.uiProvider ?: "com.vaadin.grails.server.DefaultUIProvider"
+            mapping = ["/*": uiProvider]
+            usingUIProvider = true
+        }
 
         def applicationServlet = config.servletClass ?: DEFAULT_SERVLET
         def servletName = "VaadinServlet "
@@ -66,10 +95,19 @@ class VaadinGrailsPlugin {
                 "servlet" {
                     "servlet-name"(servletName + i)
                     "servlet-class"(applicationServlet)
-                    "init-param" {
-                        "description"("Vaadin UI class")
-                        "param-name"("UI")
-                        "param-value"(obj.value)
+
+                    if (usingUIProvider) {
+                        "init-param" {
+                            "description"("Vaadin UI provider")
+                            "param-name"("UIProvider")
+                            "param-value"(obj.value)
+                        }
+                    } else {
+                        "init-param" {
+                            "description"("Vaadin UI class")
+                            "param-name"("UI")
+                            "param-value"(obj.value)
+                        }
                     }
 
                     if (widgetset) {
@@ -126,5 +164,15 @@ class VaadinGrailsPlugin {
                 }
             }
         }
+    }
+
+    def doWithSpring = {
+        xmlns grailsContext: "http://grails.org/schema/context"
+        def config = vaadinConfiguration.getConfig()
+        def packages = config.packages ?: ['*']
+        grailsContext.'component-scan'(
+                'base-package': "com.vaadin.grails, ${packages.join(',')}",
+                'name-generator': PackageAwareBeanNameGenerator.name
+        )
     }
 }
