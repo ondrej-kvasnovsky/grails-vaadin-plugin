@@ -12,7 +12,7 @@ class VaadinGrailsPlugin {
 //    private static final String DEFAULT_SERVLET = "com.vaadin.grails.GrailsVaadinServlet";
     private static final String DEFAULT_SERVLET = "com.vaadin.grails.server.DefaultServlet"
 
-    def version = "7.3.3.1"
+    def version = "7.3.3.2"
     def grailsVersion = "2.0 > *"
     def pluginExcludes = []
 
@@ -35,27 +35,30 @@ class VaadinGrailsPlugin {
 
         def config = vaadinConfiguration.getConfig()
 
-//        if (!config || !(config.mapping)) {
         if (!config) {
             return
         }
 
         def openSessionInViewFilter = config.openSessionInViewFilter
 
-        println "openSessionInViewFilter: ${openSessionInViewFilter}"
-        if (!openSessionInViewFilter) {
-            def filter = xml."filter"
-            filter[filter.size() - 1] + {
-                "filter-name"("openSessionInView")
-                "filter-class"(openSessionInViewFilter)
+        if (openSessionInViewFilter) {
+
+            def contextParam = xml.'context-param'
+            contextParam[contextParam.size() - 1] + {
+                'filter' {
+                    'filter-name'('openSessionInView')
+                    'filter-class'(openSessionInViewFilter)
+                }
             }
 
-            def filterMapping = xml."filter-mapping"
-            filterMapping[filterMapping.size() - 1] + {
-                "filter-name"("openSessionInView")
-                "url-pattern"("/*")
+            def filter = xml.'filter'
+            filter[filter.size() - 1] + {
+                'filter-mapping' {
+                    'filter-name'('openSessionInView')
+                    'url-pattern'('/*')
+                }
             }
-            println "using openSessionInViewFilter!"
+            println "Using $openSessionInViewFilter"
         }
 
         def vaadinProductionMode = config.productionMode
@@ -124,7 +127,7 @@ class VaadinGrailsPlugin {
                         }
                     }
                     "load-on-startup"("1")
-                    
+
                     if (asyncSupported) {
                         "async-supported"("true")
                     }
