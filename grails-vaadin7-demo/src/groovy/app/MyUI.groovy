@@ -1,5 +1,6 @@
 package app
 
+import com.vaadin.grails.ui.VaadinUI
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.server.VaadinRequest
@@ -8,6 +9,7 @@ import com.vaadin.grails.Grails
 import grails.vaadin7.demo.User
 import grails.vaadin7.demo.UserService
 
+@VaadinUI(path = '/')
 class MyUI extends UI {
 
     @Override

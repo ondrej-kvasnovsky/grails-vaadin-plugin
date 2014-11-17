@@ -17,7 +17,7 @@ vaadin {
     productionMode = false
 
     // Uncomment this to enable asynchronous communication, useful for vaadin-push
-    // asyncSupported = true
+    asyncSupported = true
 
     // Uncomment and provide name of the theme (a directory name in web-app/VAADIN/themes folder)
     // themes = ['sample']
