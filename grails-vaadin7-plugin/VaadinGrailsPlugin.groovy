@@ -77,7 +77,7 @@ class VaadinGrailsPlugin {
         boolean usingUIProvider = false
 
         if (mapping.isEmpty()) {
-            def uiProvider = config.uiProvider ?: "com.vaadin.grails.server.DefaultUIProvider"
+            def uiProvider = config.uiProvider ?: "com.vaadin.grails.server.DispatcherUIProvider"
             mapping = ["/*": uiProvider]
             usingUIProvider = true
         }

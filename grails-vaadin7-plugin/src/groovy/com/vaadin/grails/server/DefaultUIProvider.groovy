@@ -1,6 +1,9 @@
 package com.vaadin.grails.server
 
+import com.vaadin.grails.navigator.VaadinView
 import com.vaadin.grails.ui.VaadinUI
+import com.vaadin.navigator.Navigator
+import com.vaadin.navigator.ViewProvider
 import com.vaadin.server.UIClassSelectionEvent
 import com.vaadin.server.UICreateEvent
 import com.vaadin.server.UIProvider
@@ -32,22 +35,38 @@ class DefaultUIProvider extends UIProvider {
 
     final Map<String, Class<? extends UI>> typesByPaths = new ConcurrentHashMap()
 
+    protected boolean hasViews(Class<? extends UI> uiClass) {
+        def beanNames = applicationContext.getBeanNamesForAnnotation(VaadinView)
+        beanNames.find { beanName ->
+            def registered = applicationContext.findAnnotationOnBean(beanName, VaadinView)
+            registered.ui().find { it == uiClass }
+        }
+    }
+
     @Override
     Class<? extends UI> getUIClass(UIClassSelectionEvent event) {
         String path = event.request.pathInfo
-
-        if (path.startsWith("/")) {
-            path = path.substring(1)
-        }
-
         typesByPaths.get(path)
+    }
+
+    protected void applyViewProvider(UI ui) {
+        def navigator = new Navigator(ui, ui)
+        def viewProvider = applicationContext.getBean(ViewProvider)
+        navigator.addProvider(viewProvider)
+        ui.navigator = navigator
     }
 
     @Override
     UI createInstance(UICreateEvent event) {
         def type = event.getUIClass()
         log.debug("Creating UI of type [${type}]")
-        applicationContext.getBean(type)
+        def ui = applicationContext.getBean(type)
+
+        if (hasViews(type)) {
+            applyViewProvider(ui)
+        }
+
+        ui
     }
 
     @PostConstruct

@@ -23,7 +23,5 @@ class DefaultSessionInitListener implements SessionInitListener {
     ApplicationContext applicationContext
 
     @Override
-    void sessionInit(SessionInitEvent event) throws ServiceException {
-        event.session.addUIProvider(applicationContext.getBean(DefaultUIProvider))
-    }
+    void sessionInit(SessionInitEvent event) throws ServiceException { }
 }
