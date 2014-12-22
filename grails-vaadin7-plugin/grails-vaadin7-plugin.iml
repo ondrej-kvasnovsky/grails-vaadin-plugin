@@ -118,14 +118,15 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/classworlds/classworlds/jars/classworlds-1.1-alpha-2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.maven/maven-ant-tasks/jars/maven-ant-tasks-2.1.3.jar!/" />
           <root url="file://$MODULE_DIR$/lib" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.3.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin.external.atmosphere/atmosphere-runtime/bundles/atmosphere-runtime-2.1.2.vaadin6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.3.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/cglib/cglib-nodep/jars/cglib-nodep-2.2.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiler/jars/vaadin-client-compiler-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client/jars/vaadin-client-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-client-compiled/jars/vaadin-client-compiled-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-shared/jars/vaadin-shared-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-server/jars/vaadin-server-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-push/jars/vaadin-push-7.3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.vaadin/vaadin-themes/jars/vaadin-themes-7.3.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -134,6 +135,6 @@
     </orderEntry>
     <orderEntry type="module" module-name="grails-vaadin7-plugin-grailsPlugins" />
     <orderEntry type="library" name="grails-2.4.3" level="application" />
+    <orderEntry type="library" name="grails-2.4.4" level="application" />
   </component>
 </module>
-
