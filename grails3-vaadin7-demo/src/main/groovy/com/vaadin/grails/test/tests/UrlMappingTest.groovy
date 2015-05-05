@@ -27,10 +27,10 @@ class UrlMappingTest {
         ServletRegistrationBean servlet = get('vaadinUIServlet1')
 
         Map initParams = (Map) servlet.getProperties().get('initParameters')
-        assert initParams.get('UI') == 'com.vaadin.grails.test.SecondUI'
+        assert initParams.get('UI') == 'com.vaadin.grails.test.DemoUI'
 
         Set<String> mappings = servlet.urlMappings
-        assert mappings.toList() == ['/second/*']
+        assert mappings.toList() == ['/demo/*']
 
         assert servlet.loadOnStartup == 1
     }

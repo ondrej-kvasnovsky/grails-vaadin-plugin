@@ -5,7 +5,7 @@ import com.vaadin.ui.Label
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
 
-class SecondUI extends UI {
+class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {

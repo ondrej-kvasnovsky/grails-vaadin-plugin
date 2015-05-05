@@ -89,6 +89,7 @@ class VaadinGrailsPlugin {
             }
 
             "vaadinUIServlet${i}"(ServletRegistrationBean, clazz.newInstance(), obj.key) {
+                name = "vaadinUIServlet${i}"
                 initParameters = params
                 asyncSupported = asyncSupportedValue
                 loadOnStartup = 1
