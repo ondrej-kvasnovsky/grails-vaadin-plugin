@@ -2,6 +2,7 @@ package com.vaadin.grails
 
 import grails.util.Holders
 import org.springframework.boot.context.embedded.FilterRegistrationBean
+import org.springframework.boot.context.embedded.InitParameterConfiguringServletContextInitializer
 import org.springframework.boot.context.embedded.ServletRegistrationBean
 import org.springframework.core.Ordered
 
@@ -62,22 +63,36 @@ class VaadinGrailsPlugin {
 
         mapping.eachWithIndex() { obj, i ->
             Map params = [:]
-            params.put('UI', obj.value)
+            if (usingUIProvider) {
+                params.put('UIProvider', obj.value)
+            } else {
+                params.put('UI', obj.value)
+            }
 
             if (asyncSupportedValue) {
                 params.put('pushmode', 'automatic')
             }
+
             if (widgetset) {
                 params.put('widgetset', widgetset)
             }
+
             for (def name : initParams?.keySet()) {
-                params.put('name', initParams.get(name))
+                params.put(name, initParams.get(name))
             }
-            vaadinUIServlet(ServletRegistrationBean, clazz.newInstance(), obj.key) {
+
+            List mappings
+            if (i == 0) {
+                mappings = [obj.key, '/VAADIN/*']
+            } else {
+                mappings = [obj.key]
+            }
+
+            "vaadinUIServlet${i}"(ServletRegistrationBean, clazz.newInstance(), obj.key) {
                 initParameters = params
                 asyncSupported = asyncSupportedValue
                 loadOnStartup = 1
-                urlMappings = [obj.key, '/VAADIN/*']
+                urlMappings = mappings
             }
         }
 
@@ -93,6 +108,13 @@ class VaadinGrailsPlugin {
 
             println "Using $osivFilterClassName"
         }
+
+        // TODO: Production
+//        ServletContextInitializer
+        def vaadinProductionMode = config.productionMode
+        Map prodModeParams = ["productionMode": vaadinProductionMode]
+        prodModeServletContextInitializer(InitParameterConfiguringServletContextInitializer, prodModeParams)
+
 //        xmlns grailsContext: "http://grails.org/schema/context"
 //        def config = vaadinConfiguration.getConfig()
 //        def packages = config.packages ?: ['*']

@@ -11,7 +11,7 @@ class AsyncTest {
 
     @PluginTest
     public void 'Async is enabled'() {
-        ServletRegistrationBean servlet = get('vaadinUIServlet')
+        ServletRegistrationBean servlet = get('vaadinUIServlet0')
         assert servlet.asyncSupported
 
         Map initParams = (Map) servlet.getProperties().get('initParameters')
