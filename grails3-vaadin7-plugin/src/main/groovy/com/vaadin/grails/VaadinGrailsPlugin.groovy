@@ -36,8 +36,6 @@ class VaadinGrailsPlugin {
     VaadinConfiguration vaadinConfiguration
 
     def doWithSpring = {
-        // TODO: create here a @Configuraiton bean and do it all in Groovy...
-        println "WTF !!!"
         vaadinConfiguration = new VaadinConfiguration(Holders.getGrailsApplication().classLoader)
 
         Map config = vaadinConfiguration.getConfig()
@@ -55,10 +53,9 @@ class VaadinGrailsPlugin {
         }
 
         def applicationServlet = config.servletClass ?: DEFAULT_SERVLET
-        def servletName = 'VaadinServlet '
         def widgetset = config.widgetset
         boolean asyncSupportedValue = config.asyncSupported
-        Map initParams = config.initParams
+        Map initParams = config.initParams // TODO: write test for initParams in config
         Class clazz = getClass().getClassLoader().loadClass(applicationServlet)
 
         mapping.eachWithIndex() { obj, i ->
@@ -73,7 +70,7 @@ class VaadinGrailsPlugin {
                 params.put('pushmode', 'automatic')
             }
 
-            if (widgetset) {
+            if (widgetset) { // TODO: use a widget and write test
                 params.put('widgetset', widgetset)
             }
 
@@ -106,16 +103,13 @@ class VaadinGrailsPlugin {
                 urlPatterns = ['/*']
                 order = Ordered.HIGHEST_PRECEDENCE
             }
-
-            println "Using $osivFilterClassName"
         }
 
-        // TODO: Production
-//        ServletContextInitializer
         def vaadinProductionMode = config.productionMode
         Map prodModeParams = ["productionMode": vaadinProductionMode]
         prodModeServletContextInitializer(InitParameterConfiguringServletContextInitializer, prodModeParams)
 
+        // TODO: enable component scanning
 //        xmlns grailsContext: "http://grails.org/schema/context"
 //        def config = vaadinConfiguration.getConfig()
 //        def packages = config.packages ?: ['*']
