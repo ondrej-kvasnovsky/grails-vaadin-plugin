@@ -109,14 +109,11 @@ class VaadinGrailsPlugin {
         Map prodModeParams = ["productionMode": vaadinProductionMode]
         prodModeServletContextInitializer(InitParameterConfiguringServletContextInitializer, prodModeParams)
 
-        // TODO: enable component scanning
-//        xmlns grailsContext: "http://grails.org/schema/context"
-//        def config = vaadinConfiguration.getConfig()
-//        def packages = config.packages ?: ['*']
-//        grailsContext.'component-scan'(
-//                'base-package': "com.vaadin.grails, ${packages.join(',')}",
-//                'name-generator': PackageAwareBeanNameGenerator.name
-//        )
+        def packages = config.packages ?: ['*']
+        xmlns([ctx: 'http://www.springframework.org/schema/context'])
+        packages << 'com.vaadin.grails'
+        String packagesAsString = packages.join(',')
+        ctx.'component-scan'('base-package': packagesAsString)
     }
 
 }

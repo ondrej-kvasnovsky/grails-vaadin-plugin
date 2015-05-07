@@ -13,7 +13,7 @@ vaadin {
     // ]
 
     // This is optional, all packages will get scanned by default.
-    // packages = ['com.mycompany.vaadin']
+    packages = ['com.component.scan.test']
 
     // This is optional, default is "com.vaadin.grails.server.DefaultUIProvider".
     // uiProvider = "com.mycompany.MyGrailsAwareUIProvider"
