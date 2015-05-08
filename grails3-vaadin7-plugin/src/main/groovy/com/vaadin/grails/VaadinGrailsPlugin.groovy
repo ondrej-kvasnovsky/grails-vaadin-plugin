@@ -20,6 +20,7 @@ class VaadinGrailsPlugin {
     def grailsVersion = "3.0 > *"
     def pluginExcludes = []
 
+    def name = 'vaadin'
     def title = "Vaadin 7 Plugin"
     def author = "Ondrej Kvasnovsky"
     def authorEmail = "ondrej.kvasnovsky@gmail.com"
@@ -109,7 +110,7 @@ class VaadinGrailsPlugin {
         Map prodModeParams = ["productionMode": vaadinProductionMode]
         prodModeServletContextInitializer(InitParameterConfiguringServletContextInitializer, prodModeParams)
 
-        def packages = config.packages ?: ['*']
+        def packages = config.packages ?: []
         xmlns([ctx: 'http://www.springframework.org/schema/context'])
         packages << 'com.vaadin.grails'
         String packagesAsString = packages.join(',')
