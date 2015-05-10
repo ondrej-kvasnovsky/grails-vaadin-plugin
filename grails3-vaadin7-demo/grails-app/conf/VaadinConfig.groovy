@@ -3,8 +3,7 @@ vaadin {
     // Your Vaadin UI classes that extends com.vaadin.ui.UI.
     // The application will be available at e.g. http://localhost:8080/grails-vaadin7-demo/
     mapping = [
-            "/demo/*": "com.vaadin.grails.test.DemoUI",
-            "/test/*": "com.vaadin.grails.test.TestUI"
+            "/*": "com.app.MyUI"
     ]
 
     // Extra mapping in case you need 'reserve' a URL and it shouldn't be mapped to e.g. /* by Vaadin
@@ -13,13 +12,13 @@ vaadin {
     // ]
 
     // This is optional, all packages will get scanned by default.
-    packages = ['com.component.scan.test']
+    // packages = ['com.mycompany.vaadin']
 
     // This is optional, default is "com.vaadin.grails.server.DefaultUIProvider".
     // uiProvider = "com.mycompany.MyGrailsAwareUIProvider"
 
     // This is optional because the servlet is provided by default.
-    servletClass = "com.vaadin.grails.GrailsVaadinServlet"
+    // servletClass = "com.mycompany.MyGrailsAwareApplicationServlet"
 
     productionMode = false
 
@@ -28,8 +27,8 @@ vaadin {
     // ...or this for Hibernate 4
     openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
 
-    // Uncomment this to disable asynchronous communication, useful for vaadin-push
-    asyncSupported = true
+    // Uncomment this to enable asynchronous communication, useful for vaadin-push
+    // asyncSupported = true
 
     // Uncomment and provide name of the theme (a directory name in web-app/VAADIN/themes folder)
     // themes = ['sample']

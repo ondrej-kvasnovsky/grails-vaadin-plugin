@@ -1,29 +1,17 @@
 package com.app
 
-import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.grails.navigator.Views
+import com.vaadin.grails.ui.DefaultUI
+import com.vaadin.grails.ui.VaadinUI
 import com.vaadin.server.VaadinRequest
-import com.vaadin.ui.Label
-import com.vaadin.grails.Grails
 
-class MyUI extends UI {
+@VaadinUI(path = '/')
+class MyUI extends DefaultUI {
 
     @Override
-    protected void init(VaadinRequest vaadinRequest) {
+    protected void init(VaadinRequest r) {
+        super.init(r)
 
-		VerticalLayout layout = new VerticalLayout()
-        layout.setMargin(true)
-
-        String homeLabel = Grails.i18n("default.home.label")
-        Label label = new Label(homeLabel)
-        layout.addComponent(label)
-
-        // example of how to get Grails service and call a method
-        // List<User> users = Grails.get(UserService).getListOfUsers()
-        //    for (User user : users) {
-        //    	layout.addComponent(new Label(user.name))
-        // }
-
-		setContent(layout)
+        Views.enter(ItemView)
     }
 }

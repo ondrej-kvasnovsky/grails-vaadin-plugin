@@ -17,7 +17,7 @@ plugins {
 }
 
 version "0.1"
-group "grails3.vaadin7.demo"
+group "grails3.vaadin7.tests"
 
 apply plugin: "spring-boot"
 apply plugin: "war"
@@ -70,9 +70,9 @@ dependencies {
     // Note: It is recommended to update to a more robust driver (Chrome, Firefox etc.)
     testRuntime 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0'
 
-    compile project(':grails3-vaadin7-plugin')
-
     console "org.grails:grails-console"
+
+    compile project(':grails3-vaadin7-plugin')
 }
 
 task wrapper(type: Wrapper) {
