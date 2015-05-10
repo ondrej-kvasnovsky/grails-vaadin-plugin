@@ -38,8 +38,9 @@ class VaadinGrailsPlugin {
 
     def doWithSpring = {
         vaadinConfiguration = new VaadinConfiguration(Holders.getGrailsApplication().classLoader)
+        ClassLoader classLoader = getClass().getClassLoader()
 
-        Map config = vaadinConfiguration.getConfig()
+        Map config = vaadinConfiguration.config
         if (!config) {
             return
         }
@@ -57,14 +58,24 @@ class VaadinGrailsPlugin {
         def widgetset = config.widgetset
         boolean asyncSupportedValue = config.asyncSupported
         Map initParams = config.initParams // TODO: write test for initParams in config
-        Class clazz = getClass().getClassLoader().loadClass(applicationServlet)
+
+        Class clazz = classLoader.loadClass(applicationServlet)
 
         mapping.eachWithIndex() { obj, i ->
             Map params = [:]
+
+            String uiClazz = obj.value
+            // validate
+            try {
+                classLoader.loadClass(uiClazz)
+            } catch (ClassNotFoundException e) {
+                System.err.println "UI class not found ${e.message}"
+                return
+            }
             if (usingUIProvider) {
-                params.put('UIProvider', obj.value)
+                params.put('UIProvider', uiClazz)
             } else {
-                params.put('UI', obj.value)
+                params.put('UI', uiClazz)
             }
 
             if (asyncSupportedValue) {
@@ -98,7 +109,7 @@ class VaadinGrailsPlugin {
         def osivFilterClassName = config.openSessionInViewFilter
 
         if (osivFilterClassName) {
-            Class osiv = getClass().getClassLoader().loadClass(osivFilterClassName)
+            Class osiv = classLoader.loadClass(osivFilterClassName)
             osivFilter(FilterRegistrationBean) {
                 filter = osiv.newInstance()
                 urlPatterns = ['/*']

@@ -14,7 +14,7 @@ class VaadinConfiguration {
 
     private static final String VAADIN_CONFIG_FILE = "VaadinConfig"
 
-    ConfigObject configuration = null;
+    private ConfigObject configuration = null;
 
     private ClassLoader loader
 

@@ -3,7 +3,7 @@ vaadin {
     // Your Vaadin UI classes that extends com.vaadin.ui.UI.
     // The application will be available at e.g. http://localhost:8080/grails-vaadin7-demo/
     mapping = [
-            "/*": "app.MyUI"
+            "/*": "com.app.MyUI"
     ]
 
     // Extra mapping in case you need 'reserve' a URL and it shouldn't be mapped to e.g. /* by Vaadin
@@ -25,7 +25,7 @@ vaadin {
     // Uncomment this to activate Open Session in View for Hibernate 3
     // openSessionInViewFilter = 'org.springframework.orm.hibernate3.support.OpenSessionInViewFilter'
     // ...or this for Hibernate 4
-    // openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
+    openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
 
     // Uncomment this to enable asynchronous communication, useful for vaadin-push
     // asyncSupported = true
