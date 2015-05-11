@@ -1,11 +1,9 @@
-import com.vaadin.grails.VaadinGrailsPlugin
-
 import java.util.jar.JarFile
 
 description "Creates minimal required files to run Vaadin application in Grails", "grails vaadin-quickstart"
 
 log "Starting to create quick start files..."
-File pluginDir = new File(VaadinGrailsPlugin.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+File pluginDir = new File(com.vaadin.grails.VaadinGrailsPlugin.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 
 String s = File.separator
 String root = "META-INF${s}templates${s}"
