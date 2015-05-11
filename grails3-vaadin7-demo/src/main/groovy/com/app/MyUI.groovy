@@ -5,6 +5,7 @@ import com.vaadin.ui.VerticalLayout
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.Label
 import com.vaadin.grails.Grails
+import org.vaadin.tokenfield.TokenField
 
 class MyUI extends UI {
 
@@ -23,6 +24,9 @@ class MyUI extends UI {
         //    for (User user : users) {
         //    	layout.addComponent(new Label(user.name))
         // }
+
+        TokenField f = new TokenField("Add tags")
+        layout.addComponent(f)
 
 		setContent(layout)
     }

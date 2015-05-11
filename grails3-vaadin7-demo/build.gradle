@@ -40,6 +40,7 @@ assets {
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://maven.vaadin.com/vaadin-addons" }
 }
 
 dependencyManagement {
@@ -70,6 +71,7 @@ dependencies {
     // Note: It is recommended to update to a more robust driver (Chrome, Firefox etc.)
     testRuntime 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0'
 
+    compile "org.vaadin.addons:tokenfield:7.0.1"
     compile project(':grails3-vaadin7-plugin')
 
     console "org.grails:grails-console"

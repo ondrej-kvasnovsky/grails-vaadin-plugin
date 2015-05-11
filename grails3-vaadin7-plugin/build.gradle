@@ -29,6 +29,7 @@ apply plugin: 'idea'
 apply plugin: "spring-boot"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-gsp"
+
 // Used for publishing to central repository, remove if not needed
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
 apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
@@ -79,6 +80,7 @@ dependencies {
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
+    // compile "com.vaadin:vaadin-theme-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"
 }
 
