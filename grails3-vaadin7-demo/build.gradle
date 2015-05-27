@@ -51,6 +51,9 @@ dependencyManagement {
 }
 
 dependencies {
+//    compile gradleApi()
+//    compile localGroovy()
+
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -80,3 +83,31 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+//task cleanWidgetset(type: Delete) {
+//    delete webAppDirName + '/VAADIN/widgetsets'
+//}
+//
+//task compileWidgetset(type: JavaExec, dependsOn: cleanWidgetset) {
+//    main = 'com.vaadin.tools.WidgetsetCompiler'
+//    classpath sourceSets.main.resources.srcDirs
+//    classpath configurations.compile
+//    //classpath configurations.gwt
+//    jvmArgs '-Xss1024k'
+//    args '-logLevel'
+//    args 'INFO'
+//    args '-war'
+//    args webAppDirName + '/VAADIN/widgetsets'
+//    args '-deploy'
+//    args webAppDirName + '/WEB-INF/deploy'
+//    args "com.liljeson.mattias.statistics.web.widgetset.web-statisticsWidgetset"
+//}
+//
+//task(hello, dependsOn: jar, type: JavaExec) {
+//    main = 'com.vaadin.tools.WidgetsetCompiler'
+//    classpath = sourceSets.main.runtimeClasspath
+//}
+
+//task greeting(type: com.vaadin.grails.GreetingTask) {
+//    greeting = 'howdy!'
+//}
