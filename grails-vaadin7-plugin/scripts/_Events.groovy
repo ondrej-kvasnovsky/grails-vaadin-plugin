@@ -7,13 +7,13 @@ eventCreateWarStart = { name, stagingDir ->
     GantState.verbosity = GantState.VERBOSE
     ant.logger.setMessageOutputLevel(GantState.verbosity)
 
-    def config = classLoader.loadClass('com.vaadin.grails.VaadinConfiguration').newInstance(classLoader).config
+    ConfigObject config = classLoader.loadClass('com.vaadin.grails.VaadinConfiguration').newInstance(classLoader).config
     ant.echo("Vaadin plugin config: $config")
 
-    String sassCompile = config.sassCompile
-    if (!sassCompile) {
-        // if Vaadin version is not provided, use some it should be fine just for the SASS compilation
-        sassCompile = '7.3.3'
+    String sassCompile = '7.4.7'
+
+    if (config.containsKey('sassCompile')) {
+        sassCompile = config.get('sassCompile')
     }
 
     if (config?.productionMode) {
@@ -39,12 +39,14 @@ eventCreateWarStart = { name, stagingDir ->
                         ant.echo("SASS compilation: Temp file for Vaadin libraries: $tempUnzip")
                         ant.mkdir(dir: tempUnzip)
 
-                        String vaadinAllInSource = "http://vaadin.com/download/release/7.3/$sassCompile/vaadin-all-${sassCompile}.zip"
+                        String vaadinAllInSource = "http://vaadin.com/download/release/7.4/$sassCompile/vaadin-all-${sassCompile}.zip"
                         ant.echo("SASS compilation: $vaadinAllInSource")
                         String vaadinAllIn = temp.absolutePath + "/vaadin-all-${sassCompile}.zip"
                         ant.echo("SASS compilation: $vaadinAllIn")
 
-                        ant.get(src: vaadinAllInSource, dest: vaadinAllIn)
+                        if (!new File(vaadinAllIn).exists()) {
+                            ant.get(src: vaadinAllInSource, dest: vaadinAllIn)
+                        }
 
                         String unzipped = tempUnzip.absolutePath
                         ant.unzip(src: vaadinAllIn, dest: unzipped)
@@ -52,7 +54,8 @@ eventCreateWarStart = { name, stagingDir ->
                             arg(value: sassSource.absolutePath)
                             arg(value: sassDestination.absolutePath)
                         }
-                        ant.delete(dir: temp)
+                        // lets not delete it Jar file, it might be annoying to download 70MB everytime...
+                        ant.delete(dir: unzipped)
                         ant.echo('SASS compilation: Success')
                     }
                 } catch (Exception e) {
@@ -73,13 +76,13 @@ eventCreateWarStart = { name, stagingDir ->
     }
 
     // remove the client compiler in any case
-    ant.delete(dir:"${stagingDir}/WEB-INF/lib/", includes: "vaadin-client-compiler-7.*.*.jar", verbose: true)
+    ant.delete(dir: "${stagingDir}/WEB-INF/lib/", includes: "vaadin-client-compiler-7.*.*.jar", verbose: true)
 
     // remove the theme compiler in any case
-    ant.delete(dir:"${stagingDir}/WEB-INF/lib/", includes: "vaadin-theme-compiler-7.*.*.jar", verbose: true)
+    ant.delete(dir: "${stagingDir}/WEB-INF/lib/", includes: "vaadin-theme-compiler-7.*.*.jar", verbose: true)
 
     // remove gwt-unitCache (by-product of widgetset compilation)
-    ant.delete(dir:"${stagingDir}/VAADIN/gwt-unitCache", verbose: true)
+    ant.delete(dir: "${stagingDir}/VAADIN/gwt-unitCache", verbose: true)
 
     GantState.verbosity = GantState.WARNINGS_AND_ERRORS
     ant.logger.setMessageOutputLevel(GantState.verbosity)

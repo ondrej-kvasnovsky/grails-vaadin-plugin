@@ -20,9 +20,10 @@ vaadin {
     asyncSupported = true
 
     // Uncomment and provide name of the theme (a directory name in web-app/VAADIN/themes folder)
-    // themes = ['sample']
+    themes = ['mytheme']
+
     // You can specify exact version of Vaadin for SASS compilation
-    // sassCompile = '7.1.9'
+    sassCompile = '7.4.7'
 
     // Use your own widgetset (e.g. include addons)
     // - add the depedencies in BuildConfig.groovy

@@ -1,14 +1,16 @@
 package app
 
+import com.vaadin.annotations.Theme
+import com.vaadin.grails.Grails
 import com.vaadin.grails.ui.VaadinUI
-import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.Label
-import com.vaadin.grails.Grails
+import com.vaadin.ui.UI
+import com.vaadin.ui.VerticalLayout
 import grails.vaadin7.demo.User
 import grails.vaadin7.demo.UserService
 
+@Theme("mytheme")
 @VaadinUI(path = '/')
 class MyUI extends UI {
 
