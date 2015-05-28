@@ -4,14 +4,8 @@ eventWarStart = { warName ->
     GantState.verbosity = GantState.VERBOSE
     ant.logger.setMessageOutputLevel(GantState.verbosity)
 
-    def config = classLoader.loadClass('com.vaadin.grails.VaadinConfiguration').newInstance(classLoader).config
+    ConfigObject config = classLoader.loadClass('com.vaadin.grails.VaadinConfiguration').newInstance(classLoader).config
     ant.echo("Vaadin plugin config: $config")
-
-    String sassCompile = '7.4.7'
-
-    if (config.containsKey('sassCompile')) {
-        sassCompile = config.get('sassCompile')
-    }
 
     if (config?.productionMode) {
         // compile SCSS when in production mode... aka Vaadin does no on-the-fly-compilation
