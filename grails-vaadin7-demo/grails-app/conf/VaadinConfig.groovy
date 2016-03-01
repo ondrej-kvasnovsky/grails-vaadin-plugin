@@ -23,7 +23,7 @@ vaadin {
     themes = ['mytheme']
 
     // You can specify exact version of Vaadin for SASS compilation
-    sassCompile = '7.4.7'
+    sassCompile = '7.6.1'
 
     // Use your own widgetset (e.g. include addons)
     // - add the depedencies in BuildConfig.groovy
