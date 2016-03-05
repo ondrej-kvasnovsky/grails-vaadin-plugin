@@ -1,1 +1,1 @@
-include 'grails3-vaadin7-plugin', 'grails3-vaadin7-tests', 'grails3-vaadin7-demo', 'grails3-vaadin7-spring-demo'
+include 'grails3-vaadin7-plugin', 'grails3-vaadin7-tests', 'grails3-vaadin7-test' //, 'grails3-vaadin7-demo', 'grails3-vaadin7-spring-demo'

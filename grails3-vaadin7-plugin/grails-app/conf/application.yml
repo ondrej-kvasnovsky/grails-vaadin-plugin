@@ -1,4 +1,3 @@
----
 grails:
     profile: web-plugin
     codegen:
@@ -13,7 +12,6 @@ spring:
         template:
             check-template-location: false
 
----
 grails:
     mime:
         disable:
@@ -68,7 +66,6 @@ grails:
                 taglib: none
                 staticparts: none
 
----
 dataSource:
     pooled: true
     jmxExport: true

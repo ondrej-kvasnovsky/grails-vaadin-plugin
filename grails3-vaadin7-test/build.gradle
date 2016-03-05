@@ -19,7 +19,7 @@ configurations {
 }
 
 version "0.1"
-group "grails3.vaadin7.tests"
+group "grails3.vaadin7.test"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
