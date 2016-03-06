@@ -11,11 +11,11 @@ buildscript {
     }
 }
 
-version "0.1-SNAPSHOT"
+version "0.1"
 group "org.grails.plugins"
 
-//apply plugin: 'eclipse'
-apply plugin: 'idea'
+apply plugin: "eclipse"
+apply plugin: "idea"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-plugin-publish"
 apply plugin: "org.grails.grails-gsp"
@@ -25,9 +25,6 @@ ext {
     gradleWrapperVersion = project.gradleWrapperVersion
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -36,37 +33,21 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-starter-parent:Angel.SR3"
         mavenBom "org.grails:grails-bom:$grailsVersion"
     }
     applyMavenExclusions false
 }
 
-//configurations {
-//    compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//}
-configurations {
-    all*.exclude group: 'ch.qos.logback', module: 'logback-classic'
-    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-data-mongodb'
-}
-
 dependencies {
-    compile gradleApi()
-    compile localGroovy()
-
-    provided 'org.springframework.boot:spring-boot-starter-logging'
-    provided "org.springframework.boot:spring-boot-starter-actuator"
-    provided "org.springframework.boot:spring-boot-autoconfigure"
-    provided "org.springframework.boot:spring-boot-starter-tomcat"
-
-    provided "org.grails:grails-web-boot"
-    provided "org.grails:grails-dependencies"
-    provided 'javax.servlet:javax.servlet-api:3.1.0'
-
-    provided 'javax.validation:validation-api:1.1.0.Final'
-
-    testCompile "org.grails:grails-plugin-testing"
-
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.grails:grails-core"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.grails:grails-dependencies"
+    compile "org.grails:grails-web-boot"
+    compile "org.grails.plugins:cache"
+    compile "org.grails.plugins:scaffolding"
     console "org.grails:grails-console"
 
     String vaadinVersion = "7.6.3"
@@ -75,25 +56,21 @@ dependencies {
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
-    // compile "com.vaadin:vaadin-theme-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
 
-    [
-        "org.springframework:spring-context",
-        "org.springframework.boot:spring-boot-starter-web",
-        "org.springframework.boot:spring-boot-starter-data-mongodb",
-    ].each { dep ->
-        compile(dep) {
-            exclude module: "spring-boot-starter-logging"
-            exclude module: "logback-classic"
-        }
-    }
+    profile "org.grails.profiles:web-plugin:3.1.1"
+    provided "org.grails:grails-plugin-services"
+    provided "org.grails:grails-plugin-domain-class"
+    testCompile "org.grails:grails-plugin-testing"
+    testCompile "org.grails.plugins:geb"
+    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
+    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
-
 grailsPublish {
     // TODO: Provide values here
     user = 'user'
@@ -107,11 +84,4 @@ grailsPublish {
     developers = [johndoe: "John Doe"]
     portalUser = ""
     portalPassword = ""
-}
-
-idea {
-    module {
-        downloadJavadoc = false
-        downloadSources = false
-    }
 }
