@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+apply plugin: GreetingPlugin
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+class GreetingPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.task('hello') << {
+            println "Hello from the GreetingPlugin"
+        }
+    }
+}
