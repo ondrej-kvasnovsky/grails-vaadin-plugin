@@ -1,15 +1,31 @@
 apply plugin: 'groovy'
-apply plugin: GreetingPlugin
+apply plugin: 'maven'
 
 dependencies {
     compile gradleApi()
     compile localGroovy()
+
+    compile "org.grails:grails-core:3.1.1"
 }
 
-class GreetingPlugin implements Plugin<Project> {
-    void apply(Project project) {
-        project.task('hello') << {
-            println "Hello from the GreetingPlugin"
+
+//apply plugin: com.vaadinongrails.VaadinGradlePlugin
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+group = 'com.vaadinongrails'
+version = '1.0-SNAPSHOT'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
         }
     }
 }

@@ -3,14 +3,15 @@ buildscript {
         grailsVersion = project.grailsVersion
     }
     repositories {
-        mavenLocal()
-        maven { url "https://repo.grails.org/grails/core" }
         maven {
             url uri('../repo')
         }
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath group: 'org.gradle', name: 'customPlugin', version: '1.0-SNAPSHOT'
+//        classpath project (':grails3-vaadin7-gradle')
+        classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0-SNAPSHOT'
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0"
         classpath "org.grails.plugins:hibernate4:5.0.0"
@@ -26,8 +27,9 @@ apply plugin: "war"
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
 apply plugin: "asset-pipeline"
+//apply plugin: com.vaadinongrails.VaadinGradlePlugin
 
-apply plugin: 'org.samples.greeting'
+apply plugin: 'com.vaadinongrails.vaadin-gradle-plugin'
 
 ext {
     grailsVersion = project.grailsVersion
