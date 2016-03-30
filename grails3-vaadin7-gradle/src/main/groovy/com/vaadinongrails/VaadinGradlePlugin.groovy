@@ -56,6 +56,7 @@ class VaadinGradlePlugin implements Plugin<Project> {
         }
 
         project.tasks.create(name: 'vaadin-compile-widgetset', type: CompileWidgetsetTask, group: 'Vaadin')
+        project.getGradle().addProjectEvaluationListener(new DependencyListener())
     }
 
 //    static FileCollection getCompileClassPathOrJar(Project project) {

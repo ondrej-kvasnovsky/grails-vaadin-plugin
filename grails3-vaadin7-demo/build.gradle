@@ -10,11 +10,9 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-//        classpath project (':grails3-vaadin7-gradle')
         classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0-SNAPSHOT'
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0"
-        classpath "org.grails.plugins:hibernate4:5.0.0"
     }
 }
 
@@ -27,7 +25,6 @@ apply plugin: "war"
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
 apply plugin: "asset-pipeline"
-//apply plugin: com.vaadinongrails.VaadinGradlePlugin
 
 apply plugin: 'com.vaadinongrails.vaadin-gradle-plugin'
 
@@ -56,8 +53,6 @@ dependencyManagement {
 }
 
 dependencies {
-//    compile gradleApi()
-//    compile localGroovy()
 
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -88,31 +83,3 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
-
-//task cleanWidgetset(type: Delete) {
-//    delete webAppDirName + '/VAADIN/widgetsets'
-//}
-//
-//task compileWidgetset(type: JavaExec, dependsOn: cleanWidgetset) {
-//    main = 'com.vaadin.tools.WidgetsetCompiler'
-//    classpath sourceSets.main.resources.srcDirs
-//    classpath configurations.compile
-//    //classpath configurations.gwt
-//    jvmArgs '-Xss1024k'
-//    args '-logLevel'
-//    args 'INFO'
-//    args '-war'
-//    args webAppDirName + '/VAADIN/widgetsets'
-//    args '-deploy'
-//    args webAppDirName + '/WEB-INF/deploy'
-//    args "com.liljeson.mattias.statistics.web.widgetset.web-statisticsWidgetset"
-//}
-//
-//task(hello, dependsOn: jar, type: JavaExec) {
-//    main = 'com.vaadin.tools.WidgetsetCompiler'
-//    classpath = sourceSets.main.runtimeClasspath
-//}
-
-//task greeting(type: com.vaadin.grails.GreetingTask) {
-//    greeting = 'howdy!'
-//}

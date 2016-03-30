@@ -8,15 +8,8 @@ dependencies {
     compile "org.grails:grails-core:3.1.1"
 }
 
-
-//apply plugin: com.vaadinongrails.VaadinGradlePlugin
-
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    testCompile 'junit:junit:4.12'
 }
 
 group = 'com.vaadinongrails'

@@ -50,10 +50,12 @@ dependencies {
     compile "org.grails.plugins:scaffolding"
     console "org.grails:grails-console"
 
-    String vaadinVersion = "7.6.3"
+    String vaadinVersion = "7.6.4"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
+    compile 'javax.validation:validation-api:1.0.0.GA'
+
     compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"

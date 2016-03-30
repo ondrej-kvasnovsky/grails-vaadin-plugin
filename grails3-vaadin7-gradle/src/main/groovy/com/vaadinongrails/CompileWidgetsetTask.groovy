@@ -9,6 +9,9 @@ import org.gradle.api.tasks.TaskAction
 
 import static java.io.File.separator
 
+/**
+ * Contains some code which is cherry picked from https://github.com/johndevs/gradle-vaadin-plugin
+ */
 class CompileWidgetsetTask extends DefaultTask {
 
     CompileWidgetsetTask() {
@@ -45,19 +48,14 @@ class CompileWidgetsetTask extends DefaultTask {
             String widgetSetPath = widgetSetName.replaceAll("\\.", separator)
             File widgetSet = new File("src${separator}main${separator}resources${separator}${widgetSetPath}.gwt.xml")
             if (widgetSet.exists()) {
-                println "Found: " + widgetSet.absolutePath
-
-                def widgetsetCompileProcess = ['java']
-
+                logger.info("Found: " + widgetSet.absolutePath)
                 FileCollection classpath = getClientCompilerClassPath(project)
-
-                Iterable<File> fields = inputs.files
-                fields.forEach {
-                    println "Classpath: " + it
+                logger.info("Path to Classpath: " + classpath.asPath)
+                classpath.files.forEach {
+                    logger.info("Classpath: " + it)
                 }
 
-
-                println "Path to Classpath: " + classpath.asPath
+                def widgetsetCompileProcess = ['java']
 
                 widgetsetCompileProcess += ['-cp', classpath.asPath]
 
@@ -69,7 +67,7 @@ class CompileWidgetsetTask extends DefaultTask {
                 widgetsetCompileProcess += ['-logLevel', "INFO"]
                 widgetsetCompileProcess += ['-localWorkers', Runtime.getRuntime().availableProcessors() - 1]
 
-                widgetsetCompileProcess += '-draftCompile'
+                // widgetsetCompileProcess += '-draftCompile'
                 widgetsetCompileProcess += '-strict'
 
                 widgetsetCompileProcess += vaadinConfig.vaadin.widgetset
@@ -88,7 +86,7 @@ class CompileWidgetsetTask extends DefaultTask {
                     throw new GradleException('Widgetset failed to compile. See error log above.')
                 }
             } else {
-                println "Widgetset file not found: " + widgetSet.absolutePath
+                throw new GradleException("Widgetset file not found: " + widgetSet.absolutePath)
             }
 
         }
@@ -140,32 +138,18 @@ class CompileWidgetsetTask extends DefaultTask {
                         process.inputStream.eachLine { output ->
                             monitor.call(output)
                             if (output.contains("[WARN]")) {
-                                out.println "[WARN] " + output.replaceAll("\\[WARN\\]", '').trim()
+                                out.logger "[WARN] " + output.replaceAll("\\[WARN\\]", '').trim()
                             } else if (output.contains('[ERROR]')) {
                                 errorOccurred = true
-                                out.println "[ERROR] " + output.replaceAll("\\[ERROR\\]", '').trim()
+                                out.logger "[ERROR] " + output.replaceAll("\\[ERROR\\]", '').trim()
                             } else {
-                                out.println "[INFO] " + output.trim()
+                                out.logger "[INFO] " + output.trim()
                             }
                             out.flush()
                             if (errorOccurred) {
                                 // An error has occurred, dump everything to console
                                 project.logger.error(output.replaceAll("\\[ERROR\\]", '').trim())
                             }
-                        }
-                    } catch (IOException e) {
-                        // Stream might be closed
-                    }
-                }
-            }
-            Thread.start 'Error logger', {
-                logFile.withWriterAppend { out ->
-                    try {
-                        process.errorStream.eachLine { output ->
-                            monitor.call(output)
-                            project.logger.error(output.replaceAll("\\[ERROR\\]", '').trim())
-                            out.println "[ERROR] " + output.replaceAll("\\[ERROR\\]", '').trim()
-                            out.flush()
                         }
                     } catch (IOException e) {
                         // Stream might be closed
@@ -187,6 +171,14 @@ class CompileWidgetsetTask extends DefaultTask {
             collection += project.files(dir)
         }
 
+        moveGwtSdkFirstInClasspath(project, collection)
+
         collection
     }
+
+    static FileCollection moveGwtSdkFirstInClasspath(Project project, FileCollection collection) {
+        FileCollection gwtCompilerClasspath = project.configurations[DependencyListener.VaadinConfiguration.CLIENT.caption];
+        return gwtCompilerClasspath + collection.minus(gwtCompilerClasspath);
+    }
+
 }
