@@ -56,21 +56,9 @@ class VaadinGradlePlugin implements Plugin<Project> {
         }
 
         project.tasks.create(name: 'vaadin-compile-widgetset', type: CompileWidgetsetTask, group: 'Vaadin')
+        project.tasks.create(name: 'vaadin-compile-sass', type: CompileSassTask, group: 'Vaadin')
+
         project.getGradle().addProjectEvaluationListener(new DependencyListener())
     }
-
-//    static FileCollection getCompileClassPathOrJar(Project project) {
-//        def vaadin = project.vaadin as VaadinPluginExtension
-//        FileCollection classpath
-//        if(vaadin.plugin.useClassPathJar) {
-//            // Add dependencies using the classpath jar
-//            BuildClassPathJar pathJarTask = project.getTasksByName(BuildClassPathJar.NAME, true).first()
-//            classpath = project.files(pathJarTask.archivePath)
-//        } else {
-//            classpath = getCompileClassPath(project)
-//        }
-//        classpath
-//    }
-
 
 }
