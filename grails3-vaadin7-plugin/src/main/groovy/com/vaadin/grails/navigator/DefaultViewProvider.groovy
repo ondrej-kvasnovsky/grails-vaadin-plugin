@@ -3,7 +3,7 @@ package com.vaadin.grails.navigator
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewProvider
 import com.vaadin.ui.UI
-import org.apache.log4j.Logger
+//import org.apache.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Scope
@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct
 @Scope("prototype")
 class DefaultViewProvider implements ViewProvider {
 
-    private static final Logger log = Logger.getLogger(DefaultViewProvider)
+//    private static final Logger log = Logger.getLogger(DefaultViewProvider)
 
     @Autowired
     ApplicationContext applicationContext
@@ -28,7 +28,7 @@ class DefaultViewProvider implements ViewProvider {
     final Map<String, String> beanNamesByPaths = new HashMap()
 
     DefaultViewProvider() {
-        log.debug("ViewProvider of type [${this.getClass()}] created")
+//        log.debug("ViewProvider of type [${this.getClass()}] created")
     }
 
     protected boolean built
@@ -62,7 +62,7 @@ class DefaultViewProvider implements ViewProvider {
                 def path = registered.path()
                 beanNamesByPaths.put(path, beanName)
                 def type = applicationContext.getType(beanName)
-                log.debug("Registered view [${type}] with path [${path}] and ui [${UI.current.class}]")
+//                log.debug("Registered view [${type}] with path [${path}] and ui [${UI.current.class}]")
                 found = true
             }
         }
@@ -96,7 +96,7 @@ class DefaultViewProvider implements ViewProvider {
 
     View getView(String path) {
         def beanName = getBeanName(path)
-        log.debug("Got bean name [${beanName}] for path [${path}]")
+        //log.debug("Got bean name [${beanName}] for path [${path}]")
         if (beanName) {
             return applicationContext.getBean(beanName)
         }

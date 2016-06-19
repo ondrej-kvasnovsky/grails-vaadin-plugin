@@ -8,7 +8,6 @@ import com.vaadin.server.UIClassSelectionEvent
 import com.vaadin.server.UICreateEvent
 import com.vaadin.server.UIProvider
 import com.vaadin.ui.UI
-import org.apache.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Primary
@@ -28,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap
 @Scope("prototype")
 class DefaultUIProvider extends UIProvider {
 
-    private static final Logger log = Logger.getLogger(DefaultUIProvider)
+    //private static final Logger log = Logger.getLogger(DefaultUIProvider)
 
     @Autowired
     ApplicationContext applicationContext
@@ -59,7 +58,7 @@ class DefaultUIProvider extends UIProvider {
     @Override
     UI createInstance(UICreateEvent event) {
         def type = event.getUIClass()
-        log.debug("Creating UI of type [${type}]")
+        //log.debug("Creating UI of type [${type}]")
         def ui = applicationContext.getBean(type)
 
         if (hasViews(type)) {
@@ -77,7 +76,7 @@ class DefaultUIProvider extends UIProvider {
             def type = applicationContext.getType(beanName)
             def path = registered.path()
             typesByPaths.put(path, type)
-            log.debug("Registered UI of type [${type}] with path [${path}]")
+            //log.debug("Registered UI of type [${type}] with path [${path}]")
         }
     }
 }

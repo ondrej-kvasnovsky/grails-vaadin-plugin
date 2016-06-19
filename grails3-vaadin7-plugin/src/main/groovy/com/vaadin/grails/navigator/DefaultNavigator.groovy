@@ -8,7 +8,7 @@ import com.vaadin.server.Page
 import com.vaadin.ui.ComponentContainer
 import com.vaadin.ui.SingleComponentContainer
 import com.vaadin.ui.UI
-import org.apache.log4j.Logger
+//import org.apache.log4j.Logger
 import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component
 @Scope("prototype")
 class DefaultNavigator extends Navigator {
 
-    private static final Logger log = Logger.getLogger(DefaultNavigator)
+//    private static final Logger log = Logger.getLogger(DefaultNavigator)
 
     DefaultNavigator(UI ui, ComponentContainer container) {
         this(ui, new Navigator.ComponentContainerViewDisplay(container))
@@ -36,7 +36,7 @@ class DefaultNavigator extends Navigator {
     DefaultNavigator(UI ui, ViewDisplay display) {
         super(ui, createUriFragmentManager(ui.page), display)
         addProvider(createViewProvider())
-        log.debug("Navigator of type [${this.getClass()}] created")
+        //log.debug("Navigator of type [${this.getClass()}] created")
     }
 
     private static Navigator.UriFragmentManager createUriFragmentManager(Page page) {

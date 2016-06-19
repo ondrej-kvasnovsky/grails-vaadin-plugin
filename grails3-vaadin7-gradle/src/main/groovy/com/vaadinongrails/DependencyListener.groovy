@@ -35,7 +35,7 @@ class DependencyListener implements ProjectEvaluationListener {
 
     void afterEvaluate(Project project, ProjectState state) {
 
-        String version = "7.6.4"
+        String version = "7.6.6"
 
         createVaadin7Configuration(project, version)
 
@@ -45,9 +45,9 @@ class DependencyListener implements ProjectEvaluationListener {
     }
 
     Configuration createConfiguration(Project project,
-                             VaadinConfiguration conf,
-                             List<String> dependencies,
-                             Iterable<Configuration> extendsFrom = null) {
+                                      VaadinConfiguration conf,
+                                      List<String> dependencies,
+                                      Iterable<Configuration> extendsFrom = null) {
 
         Configuration configuration
 
@@ -84,16 +84,16 @@ class DependencyListener implements ProjectEvaluationListener {
                 String group = dependency.group
                 String name = dependency.name
                 if ("$group:$name".toString() in whitelist) {
-                    details.useVersion "7.6.4"
+                    details.useVersion "7.6.6"
                 }
 
-//              if (config.name == Configuration.CLIENT.caption) {
-                // we need to get rid of all validation-api of version 1.1.0 because it would cause runtime errors
-                if (group == 'javax.validation' && name == 'validation-api') {
-                    // GWT only supports this version, do not upgrade it
-                    details.useVersion '1.0.0.GA'
+                if (config.name == VaadinConfiguration.CLIENT.caption) {
+                    // we need to get rid of all validation-api of version 1.1.0 because it would cause runtime errors
+                    if (group == 'javax.validation' && name == 'validation-api') {
+                        // GWT only supports this version, do not upgrade it
+                        details.useVersion '1.0.0.GA'
+                    }
                 }
-//              }
             }
         })
     }

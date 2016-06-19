@@ -6,6 +6,9 @@ buildscript {
         maven {
             url uri('../repo')
         }
+//        maven {
+//            url 'https://dl.bintray.com/ondrej-kvasnovsky/plugins/'
+//        }
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
@@ -13,6 +16,7 @@ buildscript {
         classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0-SNAPSHOT'
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0"
+        classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0.2-SNAPSHOT'
     }
 }
 
@@ -43,6 +47,9 @@ repositories {
     mavenCentral()
     maven { url "https://repo.grails.org/grails/core" }
     maven { url "http://maven.vaadin.com/vaadin-addons" }
+    maven {
+        url  "http://dl.bintray.com/grails/plugins"
+    }
 }
 
 dependencyManagement {
@@ -52,6 +59,17 @@ dependencyManagement {
     applyMavenExclusions false
 }
 
+//configurations.compile.exclude group: 'asm', module: 'asm'
+
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        if (details.requested.group == 'asm' && details.requested.name == 'asm') {
+//            //details.useVersion '5.0.3'
+//            details.useTarget 'org.ow2.asm:asm:5.0.3'
+//        }
+//    }
+//}
+
 dependencies {
 
     compile "org.springframework.boot:spring-boot-starter-logging"
@@ -59,13 +77,19 @@ dependencies {
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
-    compile "org.grails:grails-dependencies"
+    compile("org.grails:grails-dependencies") {
+        exclude module: 'asm'
+    }
     compile "org.grails:grails-web-boot"
+
     compile "org.grails.plugins:cache"
     compile "org.grails.plugins:scaffolding"
-    compile "org.grails.plugins:hibernate4"
-    compile "org.hibernate:hibernate-ehcache"
-
+    //compile "org.grails.plugins:hibernate4"
+//    compile "org.grails.plugins:hibernate:3.6.10.19"
+    compile 'org.grails.plugins:hibernate4'
+//compile 'org.grails.plugins:hibernate3'
+    //compile "org.hibernate:hibernate-ehcache"
+//    compile 'org.hibernate:hibernate-validator:5.2.2.Final'
     compile project(':grails3-vaadin7-plugin')
 
     console "org.grails:grails-console"
