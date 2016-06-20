@@ -9,7 +9,7 @@ plugins {
 }
 
 group = 'com.vaadinongrails'
-version = '1.0.2-SNAPSHOT'
+version = '1.0.3'
 
 allprojects {
     repositories {
@@ -43,7 +43,7 @@ publishing {
             from components.java
             groupId 'com.vaadinongrails'
             artifactId 'vaadin-gradle-plugin'
-            version '1.0.2'
+            version '1.0.3'
         }
     }
 }
@@ -59,7 +59,7 @@ bintray {
         vcsUrl = 'https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin'
 
         version {
-            name = '1.0.2'
+            name = '1.0.3'
             desc = 'Vaadin Gradle PLugin'
             released = new Date()
 //            vcsTag = '1.0.0'
