@@ -5,6 +5,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.Project
 import org.gradle.api.file.FileCollection
+import org.gradle.api.internal.file.collections.SimpleFileCollection
 import org.gradle.api.tasks.TaskAction
 
 import static java.io.File.separator
@@ -160,6 +161,7 @@ class CompileWidgetsetTask extends DefaultTask {
     }
 
     static FileCollection getClientCompilerClassPath(Project project) {
+
         FileCollection collection = project.sourceSets.main.runtimeClasspath
         collection += project.sourceSets.main.compileClasspath
 
@@ -171,9 +173,22 @@ class CompileWidgetsetTask extends DefaultTask {
             collection += project.files(dir)
         }
 
+        project.sourceSets.main.resources.srcDirs.each {
+            collection += project.files(it)
+        }
+
         moveGwtSdkFirstInClasspath(project, collection)
 
-        collection
+        def toBeRemoved
+        collection.each {
+            def path = it.absolutePath
+            if (path.contains("validation-api-1.1.0.Final")) {
+                toBeRemoved = it
+            }
+        }
+
+        def withoutNewJavaValidationApi = collection.minus(new SimpleFileCollection(toBeRemoved))
+        return withoutNewJavaValidationApi
     }
 
     static FileCollection moveGwtSdkFirstInClasspath(Project project, FileCollection collection) {
