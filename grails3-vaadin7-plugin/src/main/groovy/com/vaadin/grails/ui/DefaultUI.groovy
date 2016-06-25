@@ -4,8 +4,9 @@ import com.vaadin.grails.Grails
 import com.vaadin.navigator.Navigator
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.UI
-//import org.apache.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
+
+//import org.apache.log4j.Logger
 import org.springframework.context.ApplicationContext
 
 /**
@@ -14,8 +15,6 @@ import org.springframework.context.ApplicationContext
  * @author Stephan Grundner
  */
 class DefaultUI extends UI {
-
-//    private static final Logger log = Logger.getLogger(DefaultUI)
 
     @Autowired
     ApplicationContext applicationContext
@@ -27,7 +26,6 @@ class DefaultUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-//        log.debug("Initializing UI of type [${current.getClass()}] with ID [${getUIId()}]")
         navigator = createNavigator(this, this)
     }
 }

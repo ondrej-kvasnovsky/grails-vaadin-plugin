@@ -9,7 +9,7 @@ plugins {
 }
 
 group = 'com.vaadinongrails'
-version = '1.0.3'
+version = appVersion
 
 allprojects {
     repositories {
@@ -35,6 +35,7 @@ dependencies {
     compile localGroovy()
 
     compile "org.grails:grails-core:3.1.1"
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 
 publishing {
@@ -43,7 +44,7 @@ publishing {
             from components.java
             groupId 'com.vaadinongrails'
             artifactId 'vaadin-gradle-plugin'
-            version '1.0.3'
+            version appVersion
         }
     }
 }
@@ -59,21 +60,20 @@ bintray {
         vcsUrl = 'https://github.com/ondrej-kvasnovsky/grails-vaadin-plugin'
 
         version {
-            name = '1.0.3'
+            name = appVersion
             desc = 'Vaadin Gradle PLugin'
             released = new Date()
-//            vcsTag = '1.0.0'
-//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
     publications = ['MyPublication']
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
+    gradleVersion = gradleWrapperVersion
 }
 
 archivesBaseName = 'vaadin-gradle-plugin'
+
 uploadArchives {
     repositories {
         mavenDeployer {

@@ -27,8 +27,6 @@ import java.util.concurrent.ConcurrentHashMap
 @Scope("prototype")
 class DefaultUIProvider extends UIProvider {
 
-    //private static final Logger log = Logger.getLogger(DefaultUIProvider)
-
     @Autowired
     ApplicationContext applicationContext
 
@@ -58,7 +56,6 @@ class DefaultUIProvider extends UIProvider {
     @Override
     UI createInstance(UICreateEvent event) {
         def type = event.getUIClass()
-        //log.debug("Creating UI of type [${type}]")
         def ui = applicationContext.getBean(type)
 
         if (hasViews(type)) {
@@ -76,7 +73,6 @@ class DefaultUIProvider extends UIProvider {
             def type = applicationContext.getType(beanName)
             def path = registered.path()
             typesByPaths.put(path, type)
-            //log.debug("Registered UI of type [${type}] with path [${path}]")
         }
     }
 }
