@@ -11,7 +11,7 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0.5'
+        classpath 'com.vaadinongrails:vaadin-gradle-plugin:1.0.7'
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0"
     }
@@ -69,7 +69,7 @@ dependencies {
     compile "org.grails.plugins:scaffolding"
     compile 'org.grails.plugins:hibernate4'
 //    compile project(':grails3-vaadin7-plugin')
-    compile 'com.vaadinongrails:grails-vaadin-plugin:1.0.5'
+    compile 'com.vaadinongrails:grails-vaadin-plugin:1.0.8'
 
     console "org.grails:grails-console"
     profile "org.grails.profiles:web:3.1.1"

@@ -51,10 +51,10 @@ dependencies {
     compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
 
-    compileOnly "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"
-    compileOnly group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
 
     profile "org.grails.profiles:web-plugin:$grailsVersion"
     compileOnly "org.grails:grails-plugin-services:$grailsVersion"
