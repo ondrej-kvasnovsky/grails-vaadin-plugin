@@ -29,16 +29,15 @@ dependencyManagement {
 }
 
 dependencies {
-    compile "org.grails:grails-core:$grailsVersion"
-    compile "org.grails:grails-dependencies:$grailsVersion"
-    compile "org.grails:grails-plugin-domain-class:$grailsVersion"
-    compile "org.grails:grails-plugin-services:$grailsVersion"
-    compile "org.grails:grails-web-boot"
-    compile "org.springframework.boot:spring-boot-autoconfigure"
-    compile "org.springframework.boot:spring-boot-starter-actuator"
-    compile "org.springframework.boot:spring-boot-starter-logging"
-    compile "org.springframework.boot:spring-boot-starter-tomcat"
-compile 'javax.validation:validation-api:1.1.0.Final'
+    compileOnly "org.grails:grails-core:$grailsVersion"
+    compileOnly "org.grails:grails-dependencies:$grailsVersion"
+    compileOnly "org.grails:grails-plugin-domain-class:$grailsVersion"
+    compileOnly "org.grails:grails-plugin-services:$grailsVersion"
+    compileOnly "org.grails:grails-web-boot"
+    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
+    compileOnly "org.springframework.boot:spring-boot-starter-actuator"
+    compileOnly "org.springframework.boot:spring-boot-starter-logging"
+    compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
 
     String vaadinVersion = "7.6.6"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
