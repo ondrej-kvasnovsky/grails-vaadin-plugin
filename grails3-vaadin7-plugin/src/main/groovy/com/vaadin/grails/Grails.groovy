@@ -1,23 +1,22 @@
 package com.vaadin.grails
 
-import grails.core.GrailsApplication
-import org.springframework.beans.BeansException
 import grails.util.Holders
+import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
+import org.springframework.beans.BeansException
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException
-import org.springframework.context.MessageSource
 import org.springframework.context.ApplicationContext
+import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
 /**
  * Manages access to Grails services (actually beans) and i18n.
  *
  * @author Ondrej Kvasnovsky
  */
+@CompileStatic
+@Slf4j
 class Grails {
-
-    private static final transient Logger log = LoggerFactory.getLogger(this)
 
     /**
      * Returns bean from application context. Example use: Grails.get(UserService).findAllUsers()
@@ -26,10 +25,8 @@ class Grails {
      * @return bean from the context
      * @throws BeansException
      */
-    public static <T> T get(final Class<T> clazz) throws BeansException {
-        ApplicationContext context = getApplicationContext()
-        T res = context.getBean(clazz)
-        return res
+    static <T> T get(final Class<T> clazz) throws BeansException {
+	    applicationContext.getBean(clazz)
     }
 
     /**
@@ -39,22 +36,18 @@ class Grails {
      * @return bean from the context
      * @throws BeansException
      */
-    public static <T> T get(final String name) throws BeansException {
-        ApplicationContext context = getApplicationContext()
-        T res = context.getBean(name)
-        return res
+    static <T> T get(final String name) throws BeansException {
+	    (T) applicationContext.getBean(name)
     }
 
 
     /**
-     * Returns Grails application context.
+     * Returns Spring ApplicationContext.
      *
-     * @return grails application context
+     * @return Spring ApplicationContext
      */
-    public static ApplicationContext getApplicationContext() {
-        GrailsApplication application = Holders.getGrailsApplication()
-        ApplicationContext res = application.getMainContext()
-        return res
+    static ApplicationContext getApplicationContext() {
+        Holders.getGrailsApplication().mainContext
     }
 
     /**
@@ -62,10 +55,8 @@ class Grails {
      *
      * @return grails message source
      */
-    public static MessageSource getMessageSource() {
-        ApplicationContext context = getApplicationContext()
-        MessageSource res = context.getBean('messageSource')
-        return res
+    static MessageSource getMessageSource() {
+	    applicationContext.getBean('messageSource', MessageSource)
     }
 
     /**
@@ -74,21 +65,8 @@ class Grails {
      * @param key to localization property
      * @return value from properties file or key (if key value is not found)
      */
-    public static String i18n(final String key) {
-        Locale locale = LocaleContextHolder.getLocale()
-        String res = i18n(key, locale)
-        return res
-    }
-
-    /**
-     * Provides access to i18n values.
-     *
-     * @param key to localization property
-     * @return value from properties file or key (if key value is not found)
-     */
-    public static String i18n(final String key, final Locale locale) {
-        String res = i18n(key, null, locale)
-        return res
+    static String i18n(final String key, final Locale locale) {
+        i18n(key, null, locale)
     }
 
     /**
@@ -96,24 +74,10 @@ class Grails {
      *
      * @param key to localization property
      * @param args arguments, e.g. "Hallo {0}"
-     * @return value from properties file or key (if key value is not found)
-     */
-    public static String i18n(final String key, final Object[] args) {
-        String res = i18n(key, args, null, null)
-        return res
-    }
-
-    /**
-     * Provides access to i18n values.
-     *
-     * @param key to localization property
-     * @param args arguments, e.g. "Hallo {0}"
-     * @param locale locale
      * @return value from properties file or key (if key value is not found)
      */
     public static String i18n(final String key, final Object[] args, final Locale locale) {
-        String res = i18n(key, args, null, locale)
-        return res
+        i18n(key, args, null, locale)
     }
 
     /**
@@ -121,40 +85,35 @@ class Grails {
      *
      * @param key to localization property
      * @param args arguments, e.g. "Hello {0}"
-     * @param defaultValue
-     * @param locale locale
      * @return value from properties file or key (if key value is not found)
      */
-    public static String i18n(final String key, final Object[] args, final String defaultValue, Locale locale) {
-        String res = null
+    static String i18n(final String key, final Object[] args = null, final String defaultValue = null, Locale locale = LocaleContextHolder.locale) {
+        String res
         try {
-            if (locale == null) {
-                locale = LocaleContextHolder.getLocale()
-            }
             if (defaultValue) {
-                res = getMessageSource().getMessage(key, args, defaultValue, locale)
+                res = messageSource.getMessage(key, args, defaultValue, locale)
             }
             else {
-                res = getMessageSource().getMessage(key, args, locale)
+                res = messageSource.getMessage(key, args, locale)
             }
         } catch (final Throwable t) {
-            log.warn(t.getLocalizedMessage())
+            log.warn(t.localizedMessage)
         }
         if (res == null) {
             // return the key in brackets in case the fetching fails
-            res = "[" + key + "]"
+            "[" + key + "]"
         }
-        return res
+        else {
+            res
+        }
     }
 
     /**
      * Returns an unique bean name for the specified type.
      *
-     * @param type
-     * @return
      * @throws NoUniqueBeanDefinitionException
      */
-    public static String getUniqueBeanName(Class type) throws NoUniqueBeanDefinitionException {
+    static String getUniqueBeanName(Class type) throws NoUniqueBeanDefinitionException {
         def beanNames = applicationContext.getBeanNamesForType(type)
         if (beanNames.size() > 1) {
             throw new NoUniqueBeanDefinitionException(type, beanNames)
@@ -164,14 +123,9 @@ class Grails {
 
     /**
      * Returns an unique bean for the specified type.
-     *
-     * @param type
-     * @param args
-     * @return
      * @throws NoUniqueBeanDefinitionException
      */
-    public static def <T> T getUniqueBean(Class<? super T> type, Object... args = null) throws NoUniqueBeanDefinitionException {
-        def beanName = getUniqueBeanName(type)
-        applicationContext.getBean(beanName, args)
+    static <T> T getUniqueBean(Class<? super T> type, Object... args = null) throws NoUniqueBeanDefinitionException {
+	    (T) applicationContext.getBean(getUniqueBeanName(type), args)
     }
 }

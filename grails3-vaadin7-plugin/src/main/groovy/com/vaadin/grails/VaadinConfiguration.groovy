@@ -1,20 +1,21 @@
 package com.vaadin.grails
 
 import grails.util.Environment
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
+
 /**
  * Manages user defined VaadinConfig class.
  *
  * @author Ondrej Kvasnovsky
  */
+@CompileStatic
+@Slf4j
 class VaadinConfiguration {
-
-    private static final transient Logger log = LoggerFactory.getLogger(this)
 
     private static final String VAADIN_CONFIG_FILE = "VaadinConfig"
 
-    private ConfigObject configuration = null;
+    private ConfigObject configuration
 
     private ClassLoader loader
 
@@ -25,13 +26,12 @@ class VaadinConfiguration {
     def getConfig() {
         if (configuration == null) {
             try {
-                Class configFile = loader.loadClass(VAADIN_CONFIG_FILE);
-                configuration = new ConfigSlurper(Environment.current.name).parse(configFile);
+                Class configFile = loader.loadClass(VAADIN_CONFIG_FILE)
+                configuration = new ConfigSlurper(Environment.current.name).parse(configFile)
             } catch (ClassNotFoundException e) {
-                log.warn "Unable to find Vaadin plugin config file: ${VAADIN_CONFIG_FILE}.groovy"
+                log.warn 'Unable to find Vaadin plugin config file: {}.groovy', VAADIN_CONFIG_FILE
             }
         }
-        def res = configuration?.vaadin
-        return res;
+        configuration?.vaadin
     }
 }

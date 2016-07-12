@@ -8,7 +8,8 @@ import com.vaadin.server.Page
 import com.vaadin.ui.ComponentContainer
 import com.vaadin.ui.SingleComponentContainer
 import com.vaadin.ui.UI
-//import org.apache.log4j.Logger
+import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
 import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
@@ -18,30 +19,30 @@ import org.springframework.stereotype.Component
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 @Primary
 @Component("navigator")
 @Scope("prototype")
+@Slf4j
 class DefaultNavigator extends Navigator {
 
-//    private static final Logger log = Logger.getLogger(DefaultNavigator)
-
     DefaultNavigator(UI ui, ComponentContainer container) {
-        this(ui, new Navigator.ComponentContainerViewDisplay(container))
+        this(ui, new ComponentContainerViewDisplay(container))
     }
 
     DefaultNavigator(UI ui, SingleComponentContainer container) {
-        this(ui, new Navigator.SingleComponentContainerViewDisplay(container))
+        this(ui, new SingleComponentContainerViewDisplay(container))
     }
 
     DefaultNavigator(UI ui, ViewDisplay display) {
         super(ui, createUriFragmentManager(ui.page), display)
         addProvider(createViewProvider())
-        //log.debug("Navigator of type [${this.getClass()}] created")
+        log.debug('Navigator of type [{}] created', getClass().name)
     }
 
-    private static Navigator.UriFragmentManager createUriFragmentManager(Page page) {
-        def beanName = Grails.getUniqueBeanName(Navigator.UriFragmentManager)
-        Grails.applicationContext.getBean(beanName, page)
+    private static UriFragmentManager createUriFragmentManager(Page page) {
+        def beanName = Grails.getUniqueBeanName(UriFragmentManager)
+        (UriFragmentManager) Grails.applicationContext.getBean(beanName, page)
     }
 
     protected ViewProvider createViewProvider() {
