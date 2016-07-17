@@ -8,6 +8,7 @@ import com.vaadin.server.UIClassSelectionEvent
 import com.vaadin.server.UICreateEvent
 import com.vaadin.server.UIProvider
 import com.vaadin.ui.UI
+import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Primary
@@ -22,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 @Primary
 @Component("uiProvider")
 @Scope("prototype")
@@ -33,8 +35,7 @@ class DefaultUIProvider extends UIProvider {
     final Map<String, Class<? extends UI>> typesByPaths = new ConcurrentHashMap()
 
     protected boolean hasViews(Class<? extends UI> uiClass) {
-        def beanNames = applicationContext.getBeanNamesForAnnotation(VaadinView)
-        beanNames.find { beanName ->
+        applicationContext.getBeanNamesForAnnotation(VaadinView).find { beanName ->
             def registered = applicationContext.findAnnotationOnBean(beanName, VaadinView)
             registered.ui().find { it == uiClass }
         }
@@ -42,14 +43,12 @@ class DefaultUIProvider extends UIProvider {
 
     @Override
     Class<? extends UI> getUIClass(UIClassSelectionEvent event) {
-        String path = event.request.pathInfo
-        typesByPaths.get(path)
+        typesByPaths[event.request.pathInfo]
     }
 
     protected void applyViewProvider(UI ui) {
         def navigator = new Navigator(ui, ui)
-        def viewProvider = applicationContext.getBean(ViewProvider)
-        navigator.addProvider(viewProvider)
+        navigator.addProvider(applicationContext.getBean(ViewProvider))
         ui.navigator = navigator
     }
 
@@ -67,12 +66,9 @@ class DefaultUIProvider extends UIProvider {
 
     @PostConstruct
     void init() {
-        def beanNames = applicationContext.getBeanNamesForAnnotation(VaadinUI)
-        beanNames.each { beanName ->
-            def registered = applicationContext.findAnnotationOnBean(beanName, VaadinUI)
-            def type = applicationContext.getType(beanName)
-            def path = registered.path()
-            typesByPaths.put(path, type)
+        for (beanName in applicationContext.getBeanNamesForAnnotation(VaadinUI)) {
+            String path = applicationContext.findAnnotationOnBean(beanName, VaadinUI).path()
+            typesByPaths[path] = (Class<? extends UI>) applicationContext.getType(beanName)
         }
     }
 }

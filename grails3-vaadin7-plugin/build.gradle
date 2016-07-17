@@ -1,7 +1,4 @@
 buildscript {
-    ext {
-        grailsVersion = project.grailsVersion
-    }
     repositories {
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
@@ -14,15 +11,9 @@ buildscript {
 version appVersion
 group "org.grails.plugins"
 
-apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-plugin-publish"
-
-ext {
-    grailsVersion = project.grailsVersion
-    gradleWrapperVersion = project.gradleWrapperVersion
-}
 
 repositories {
     mavenLocal()
@@ -38,13 +29,15 @@ dependencyManagement {
 }
 
 dependencies {
-    compileOnly "org.springframework.boot:spring-boot-starter-logging"
-    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
     compileOnly "org.grails:grails-core:$grailsVersion"
-    compileOnly "org.springframework.boot:spring-boot-starter-actuator"
-    compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
     compileOnly "org.grails:grails-dependencies:$grailsVersion"
+    compileOnly "org.grails:grails-plugin-domain-class:$grailsVersion"
+    compileOnly "org.grails:grails-plugin-services:$grailsVersion"
     compileOnly "org.grails:grails-web-boot"
+    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
+    compileOnly "org.springframework.boot:spring-boot-starter-actuator"
+    compileOnly "org.springframework.boot:spring-boot-starter-logging"
+    compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
 
     String vaadinVersion = "7.6.6"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
@@ -54,15 +47,9 @@ dependencies {
     compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-push:${vaadinVersion}"
-    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+    compile 'javax.servlet.jsp:jsp-api:2.2'
 
     profile "org.grails.profiles:web-plugin:$grailsVersion"
-    compileOnly "org.grails:grails-plugin-services:$grailsVersion"
-    compileOnly "org.grails:grails-plugin-domain-class:$grailsVersion"
-    testCompile "org.grails:grails-plugin-testing:$grailsVersion"
-    testCompile "org.grails.plugins:geb"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 }
 
 task wrapper(type: Wrapper) {

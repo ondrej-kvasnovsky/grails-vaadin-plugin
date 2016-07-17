@@ -1,15 +1,15 @@
 package com.vaadin.grails
 
-import com.vaadin.server.VaadinServletService
-import com.vaadin.server.VaadinServlet
 import com.vaadin.server.DeploymentConfiguration
+import com.vaadin.server.VaadinServlet
+import com.vaadin.server.VaadinServletService
 import grails.util.Holders
+import groovy.transform.CompileStatic
 
 /**
- *
- *
  * @author Ondrej Kvasnovsky
  */
+@CompileStatic
 class GrailsVaadinServletService extends VaadinServletService {
 
     GrailsVaadinServletService(VaadinServlet servlet, DeploymentConfiguration deploymentConfiguration) {
@@ -18,7 +18,6 @@ class GrailsVaadinServletService extends VaadinServletService {
 
     @Override
     ClassLoader getClassLoader() {
-        ClassLoader loader = Holders.grailsApplication.getClassLoader()
-        return loader
+        Holders.grailsApplication.getClassLoader()
     }
 }

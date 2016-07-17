@@ -3,7 +3,8 @@ package com.vaadin.grails.navigator
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewProvider
 import com.vaadin.ui.UI
-//import org.apache.log4j.Logger
+import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Scope
@@ -16,29 +17,31 @@ import javax.annotation.PostConstruct
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 @Component("viewProvider")
 @Scope("prototype")
+@Slf4j
 class DefaultViewProvider implements ViewProvider {
-
-//    private static final Logger log = Logger.getLogger(DefaultViewProvider)
 
     @Autowired
     ApplicationContext applicationContext
 
-    final Map<String, String> beanNamesByPaths = new HashMap()
+    final Map<String, String> beanNamesByPaths = [:]
 
     DefaultViewProvider() {
-//        log.debug("ViewProvider of type [${this.getClass()}] created")
+        log.debug('ViewProvider of type [{}] created', getClass().name)
     }
 
     protected boolean built
 
     protected boolean belongsToCurrentUI(VaadinView registered) {
         def uis = registered.ui()
-        if (uis.size() > 0) {
-            return uis.contains(UI.current.class)
+        if (uis) {
+            uis.contains(UI.current.class)
         }
-        true
+        else {
+            true
+        }
     }
 
     @PostConstruct
@@ -49,7 +52,7 @@ class DefaultViewProvider implements ViewProvider {
     /**
      * Build the view map.
      *
-     * @return True if at least one annotated view was found, otherwise false
+     * @return true if at least one annotated view was found
      */
     protected boolean build() {
         beanNamesByPaths.clear()
@@ -62,7 +65,7 @@ class DefaultViewProvider implements ViewProvider {
                 def path = registered.path()
                 beanNamesByPaths.put(path, beanName)
                 def type = applicationContext.getType(beanName)
-//                log.debug("Registered view [${type}] with path [${path}] and ui [${UI.current.class}]")
+                log.debug('Registered view [{}] with path [{}] and ui [{}]', type, path, UI.current.getClass().name)
                 found = true
             }
         }
@@ -96,10 +99,9 @@ class DefaultViewProvider implements ViewProvider {
 
     View getView(String path) {
         def beanName = getBeanName(path)
-        //log.debug("Got bean name [${beanName}] for path [${path}]")
+        log.debug('Got bean name [{}] for path [{}]', beanName, path)
         if (beanName) {
-            return applicationContext.getBean(beanName)
+            (View) applicationContext.getBean(beanName)
         }
-        null
     }
 }

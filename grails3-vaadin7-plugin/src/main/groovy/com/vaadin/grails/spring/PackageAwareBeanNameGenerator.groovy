@@ -2,6 +2,7 @@ package com.vaadin.grails.spring
 
 import com.vaadin.grails.navigator.VaadinView
 import grails.util.GrailsNameUtils
+import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition
 import org.springframework.beans.factory.config.BeanDefinition
 import org.springframework.beans.factory.support.BeanDefinitionRegistry
@@ -13,10 +14,11 @@ import org.springframework.context.annotation.AnnotationBeanNameGenerator
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 class PackageAwareBeanNameGenerator extends AnnotationBeanNameGenerator implements BeanNameGenerator {
 
     String getBeanPackage(String beanClassName) {
-        String beanPackage = null
+        String beanPackage
         int i = beanClassName.lastIndexOf('.')
         if (i != -1) {
             beanPackage = beanClassName.substring(0, i+1)
@@ -26,23 +28,15 @@ class PackageAwareBeanNameGenerator extends AnnotationBeanNameGenerator implemen
 
     @Override
     String generateBeanName(BeanDefinition definition, BeanDefinitionRegistry registry) {
-        String beanName = null
+        String beanName
 
-        if (definition instanceof AnnotatedBeanDefinition) {
+        if (definition instanceof AnnotatedBeanDefinition && definition.metadata.hasAnnotation(VaadinView.name)) {
+            String beanClassName = definition.beanClassName
+            String beanPackage = getBeanPackage(beanClassName) ?: ""
 
-            if (definition.metadata.hasAnnotation(VaadinView.name)) {
-                def beanClassName = definition.beanClassName
-                def beanPackage = getBeanPackage(beanClassName) ?: ""
-
-                beanName = "${beanPackage}${GrailsNameUtils.getPropertyName(beanClassName)}"
-            }
-
+            beanName = beanPackage + GrailsNameUtils.getPropertyName(beanClassName)
         }
 
-        if (beanName == null) {
-            beanName = super.generateBeanName(definition, registry)
-        }
-
-        beanName
+        beanName ?: super.generateBeanName(definition, registry)
     }
 }

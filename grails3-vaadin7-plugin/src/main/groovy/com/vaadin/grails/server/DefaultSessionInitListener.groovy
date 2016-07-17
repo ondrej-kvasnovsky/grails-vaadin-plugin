@@ -3,6 +3,7 @@ package com.vaadin.grails.server
 import com.vaadin.server.ServiceException
 import com.vaadin.server.SessionInitEvent
 import com.vaadin.server.SessionInitListener
+import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Primary
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 @Primary
 @Component("sessionInitListener")
 @Scope("prototype")

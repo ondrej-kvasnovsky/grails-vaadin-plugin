@@ -5,13 +5,16 @@ import com.vaadin.grails.ui.VaadinUI
 import com.vaadin.navigator.View
 import com.vaadin.server.Page
 import com.vaadin.ui.UI
+import groovy.transform.CompileStatic
 import org.grails.web.util.WebUtils
+import org.springframework.util.Assert
 
 /**
  * Ease navigation between Views.
  *
  * @author Stephan grundner
  */
+@CompileStatic
 final class Views {
 
     /**
@@ -21,10 +24,9 @@ final class Views {
      * @return A string representation of a map
      */
     static String encodeParams(Map params) {
-        def encoded = WebUtils.toQueryString(params)
-        encoded = encoded.replace("&", "/")
+        def encoded = WebUtils.toQueryString(params).replace("&", "/")
         if (encoded.startsWith("?")) {
-            encoded = encoded.substring(1, encoded.length())
+            encoded = encoded.substring(1)
         }
         encoded
     }
@@ -46,12 +48,7 @@ final class Views {
      * @param params The parameter map (optional)
      */
     static void enter(String path, Map params = null) {
-        def navigationState = path
-        if (params && params.size() > 0) {
-            def encoded = encodeParams(params)
-            navigationState = "${path}/${encoded}"
-        }
-        UI.current.navigator.navigateTo(navigationState)
+        UI.current.navigator.navigateTo(params ? path + '/' + encodeParams(params) : path)
     }
 
     /**
@@ -61,13 +58,10 @@ final class Views {
      * @param params The parameter map (optional)
      */
     static void enter(Class<? extends View> type, Map params = null) {
-        def applicationContext = Grails.applicationContext
         def viewBeanName = Grails.getUniqueBeanName(type)
-        if (viewBeanName == null) {
-            throw new RuntimeException("No View found for type [${type}]")
-        }
-        def view = applicationContext.findAnnotationOnBean(viewBeanName, VaadinView)
-        enter((String) view.path(), params)
+        Assert.notNull(viewBeanName, "No View found for type [${type}]")
+        VaadinView view = Grails.applicationContext.findAnnotationOnBean(viewBeanName, VaadinView)
+        enter(view.path(), params)
     }
 
     /**
@@ -79,25 +73,17 @@ final class Views {
      */
     static void enter(Class<? extends UI> uiType, Class<? extends View> viewType, Map params = null) {
         def applicationContext = Grails.applicationContext
-        def uiBeanName = Grails.getUniqueBeanName(uiType)
-        if (uiBeanName == null) {
-            throw new RuntimeException("No UI found for type [${uiType}]")
-        }
-        def ui = applicationContext.findAnnotationOnBean(uiBeanName, VaadinUI)
 
-        def viewBeanName = Grails.getUniqueBeanName(viewType)
-        if (viewBeanName == null) {
-            throw new RuntimeException("No View found for type [${viewType}]")
-        }
-        def view = applicationContext.findAnnotationOnBean(viewBeanName, VaadinView)
+        String beanName = Grails.getUniqueBeanName(uiType)
+        Assert.notNull(beanName, "No UI found for type [${uiType}]")
+        VaadinUI ui = applicationContext.findAnnotationOnBean(beanName, VaadinUI)
 
-        def location = "${ui.path()}#!${view.path()}"
+        beanName = Grails.getUniqueBeanName(viewType)
+        Assert.notNull(beanName, "No View found for type [${viewType}]")
+        VaadinView view = applicationContext.findAnnotationOnBean(beanName, VaadinView)
 
-        if (params) {
-            location += "/${encodeParams(params)}"
-        }
-
-        Page.current.setLocation(location)
+        String location = "${ui.path()}#!${view.path()}"
+        Page.current.setLocation(params ? location + '/' + encodeParams(params) : location)
     }
 
     private Views() {}

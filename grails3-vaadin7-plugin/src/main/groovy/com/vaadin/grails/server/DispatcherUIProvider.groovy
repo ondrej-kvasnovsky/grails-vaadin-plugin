@@ -7,12 +7,14 @@ import com.vaadin.shared.communication.PushMode
 import com.vaadin.shared.ui.ui.Transport
 import com.vaadin.ui.UI
 import grails.util.Holders
+import groovy.transform.CompileStatic
 
 /**
  * Dispatcher <code>UIProvider</code>.
  *
  * @author Stephan Grundner
  */
+@CompileStatic
 final class DispatcherUIProvider extends UIProvider {
 
     private UIProvider delegate
