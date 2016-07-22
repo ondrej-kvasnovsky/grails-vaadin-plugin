@@ -1,9 +1,9 @@
 package com.vaadin.grails.navigator
 
+import com.vaadin.grails.Grails
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewProvider
 import com.vaadin.ui.UI
-import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
@@ -17,7 +17,6 @@ import javax.annotation.PostConstruct
  *
  * @author Stephan Grundner
  */
-@CompileStatic
 @Component("viewProvider")
 @Scope("prototype")
 @Slf4j
@@ -38,8 +37,7 @@ class DefaultViewProvider implements ViewProvider {
         def uis = registered.ui()
         if (uis) {
             uis.contains(UI.current.class)
-        }
-        else {
+        } else {
             true
         }
     }
@@ -59,7 +57,7 @@ class DefaultViewProvider implements ViewProvider {
         boolean found = false
         def beanNames = applicationContext.getBeanNamesForAnnotation(VaadinView)
         beanNames.each { beanName ->
-            VaadinView registered = applicationContext
+            VaadinView registered = Grails.getApplicationContext()
                     .findAnnotationOnBean(beanName, VaadinView)
             if (belongsToCurrentUI(registered)) {
                 def path = registered.path()

@@ -27,11 +27,11 @@ import org.springframework.stereotype.Component
 class DefaultNavigator extends Navigator {
 
     DefaultNavigator(UI ui, ComponentContainer container) {
-        this(ui, new ComponentContainerViewDisplay(container))
+        this(ui, new Navigator.ComponentContainerViewDisplay(container))
     }
 
     DefaultNavigator(UI ui, SingleComponentContainer container) {
-        this(ui, new SingleComponentContainerViewDisplay(container))
+        this(ui, new Navigator.SingleComponentContainerViewDisplay(container))
     }
 
     DefaultNavigator(UI ui, ViewDisplay display) {
@@ -40,9 +40,9 @@ class DefaultNavigator extends Navigator {
         log.debug('Navigator of type [{}] created', getClass().name)
     }
 
-    private static UriFragmentManager createUriFragmentManager(Page page) {
-        def beanName = Grails.getUniqueBeanName(UriFragmentManager)
-        (UriFragmentManager) Grails.applicationContext.getBean(beanName, page)
+    private static Navigator.UriFragmentManager createUriFragmentManager(Page page) {
+        def beanName = Grails.getUniqueBeanName(Navigator.UriFragmentManager)
+        (Navigator.UriFragmentManager) Grails.applicationContext.getBean(beanName, page)
     }
 
     protected ViewProvider createViewProvider() {
