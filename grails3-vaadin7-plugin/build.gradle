@@ -39,7 +39,7 @@ dependencies {
     compileOnly "org.springframework.boot:spring-boot-starter-logging"
     compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
 
-    String vaadinVersion = "7.6.6"
+    String vaadinVersion = "7.7.8"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
