@@ -25,15 +25,15 @@ class CompileWidgetsetTask extends DefaultTask {
             inputs.files(project.configurations.compile)
 
             project.sourceSets.main.java.srcDirs.each {
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/client/**/*.java'))
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/shared/**/*.java'))
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/public/**/*.*'))
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/*.gwt.xml'))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}client${separator}**${separator}*.java"))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}shared${separator}**${separator}*.java"))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}public${separator}**${separator}*.*"))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}*.gwt.xml"))
             }
 
             project.sourceSets.main.resources.srcDirs.each {
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/public/**/*.*'))
-                inputs.files(project.fileTree(it.absolutePath).include('**/*/*.gwt.xml'))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}public${separator}**${separator}*.*"))
+                inputs.files(project.fileTree(it.absolutePath).include("**${separator}*${separator}*.gwt.xml"))
             }
         }
     }
@@ -64,7 +64,7 @@ class CompileWidgetsetTask extends DefaultTask {
 
                 widgetsetCompileProcess += ['-style', "OBF"]
                 widgetsetCompileProcess += ['-optimize', 0]
-                widgetsetCompileProcess += ['-war', "src/main/webapp/VAADIN/widgetsets"]
+                widgetsetCompileProcess += ['-war', "src${separator}main${separator}webapp${separator}VAADIN${separator}widgetsets"]
                 widgetsetCompileProcess += ['-logLevel', "INFO"]
                 widgetsetCompileProcess += ['-localWorkers', Runtime.getRuntime().availableProcessors() - 1]
 

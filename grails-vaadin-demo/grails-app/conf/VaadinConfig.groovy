@@ -25,7 +25,9 @@ vaadin {
     // Uncomment this to activate Open Session in View for Hibernate 3
     // openSessionInViewFilter = 'org.springframework.orm.hibernate3.support.OpenSessionInViewFilter'
     // ...or this for Hibernate 4
-    openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
+    // openSessionInViewFilter = 'org.springframework.orm.hibernate4.support.OpenSessionInViewFilter'
+    // ...or this for Hibernate 5
+    openSessionInViewFilter = 'org.springframework.orm.hibernate5.support.OpenSessionInViewFilter'
 
     // Uncomment this to enable asynchronous communication, useful for vaadin-push
     asyncSupported = true

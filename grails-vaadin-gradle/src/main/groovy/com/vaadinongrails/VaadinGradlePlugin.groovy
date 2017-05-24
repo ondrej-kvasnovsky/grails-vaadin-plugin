@@ -5,6 +5,7 @@ import org.gradle.api.Project
 
 class VaadinGradlePlugin implements Plugin<Project> {
 
+    @Override
     void apply(Project project) {
 
         project.tasks.create(name: 'vaadin-quickstart', type: QuickStartTask, group: 'vaadin')

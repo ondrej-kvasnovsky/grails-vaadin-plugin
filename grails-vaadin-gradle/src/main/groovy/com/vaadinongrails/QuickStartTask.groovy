@@ -12,7 +12,7 @@ class QuickStartTask extends DefaultTask {
     private static final String s = File.separator
 
     @TaskAction
-    public void run() {
+    void run() {
         println "Vaadin QuickStart task"
         File pluginJar = new File(VaadinGradlePlugin.class.getProtectionDomain().getCodeSource().getLocation().getPath());
         JarFile jar = new JarFile(pluginJar);

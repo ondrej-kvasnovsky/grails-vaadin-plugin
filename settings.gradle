@@ -1,2 +1,4 @@
-include 'grails-vaadin-plugin', 'grails-vaadin-tests', 'grails-vaadin-demo', 'grails-vaadin-gradle'
-//'hello-world',
+include 'grails-vaadin-plugin'
+include 'grails-vaadin-tests'
+include 'grails-vaadin-demo'
+include 'grails-vaadin-gradle'
