@@ -13,3 +13,8 @@ grails-vaadin7-plugin/web-app
 grailsw
 grailsw.bat
 metadata
+gradlew
+gradlew.bat
+gradle
+.gradletasknamecache
+repo

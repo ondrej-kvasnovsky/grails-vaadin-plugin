@@ -5,7 +5,7 @@ buildscript {
 }
 
 plugins {
-    id "com.jfrog.bintray" version "1.5"
+    id "com.jfrog.bintray" version "1.7.3"
 }
 
 group = 'com.vaadinongrails'
@@ -34,7 +34,7 @@ dependencies {
     compile gradleApi()
     compile localGroovy()
 
-    compile "org.grails:grails-core:3.1.1"
+    compile "org.grails:grails-core:$grailsVersion"
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 

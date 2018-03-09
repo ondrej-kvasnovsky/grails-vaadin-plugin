@@ -1,6 +1,5 @@
 package com.vaadin.grails.test.tests
 
-import com.vaadin.data.util.BeanItemContainer
 import com.vaadin.grails.test.OsivDummy1
 import com.vaadin.grails.test.utils.PluginTest
 import com.vaadin.grails.test.utils.PluginTestSuite
@@ -22,10 +21,10 @@ class OsivTest {
     @PluginTest
     public void 'No Session found for current thread exception is not thrown'() {
         List<OsivDummy1> all = OsivDummy1.findAll()
-        BeanItemContainer<OsivDummy1> container = new BeanItemContainer<OsivDummy1>(OsivDummy1.class, all)
+//        BeanItemContainer<OsivDummy1> container = new BeanDataProvider<OsivDummy1>(OsivDummy1.class, all)
 
-        Grid grid = new Grid(container)
-
+        Grid grid = new Grid(OsivDummy1.class)
+        grid.setData(all)
         VerticalLayout content = UI.current.content
         content.addComponent(grid)
         content.removeComponent(grid)

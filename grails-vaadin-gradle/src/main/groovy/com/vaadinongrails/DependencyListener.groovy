@@ -35,7 +35,7 @@ class DependencyListener implements ProjectEvaluationListener {
 
     void afterEvaluate(Project project, ProjectState state) {
 
-        String version = "8.0.6"
+        String version = "8.3.1"
 
         createVaadin7Configuration(project, version)
 
@@ -84,7 +84,7 @@ class DependencyListener implements ProjectEvaluationListener {
                 String group = dependency.group
                 String name = dependency.name
                 if ("$group:$name".toString() in whitelist) {
-                    details.useVersion "8.0.6"
+                    details.useVersion "8.3.1"
                 }
 
                 if (config.name == VaadinConfiguration.CLIENT.caption) {

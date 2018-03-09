@@ -1,9 +1,9 @@
 package com.vaadin.grails
 
 import grails.util.Holders
-import org.springframework.boot.context.embedded.FilterRegistrationBean
+import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.boot.context.embedded.InitParameterConfiguringServletContextInitializer
-import org.springframework.boot.context.embedded.ServletRegistrationBean
+import org.springframework.boot.web.servlet.ServletRegistrationBean
 import org.springframework.core.Ordered
 
 /**

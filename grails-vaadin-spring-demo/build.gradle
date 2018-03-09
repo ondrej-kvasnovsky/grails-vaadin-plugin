@@ -71,7 +71,7 @@ dependencies {
     // Note: It is recommended to update to a more robust driver (Chrome, Firefox etc.)
     testRuntime 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0'
 
-    compile project(':grails3-vaadin7-plugin')
+    compile project(':grails-vaadin-plugin')
 
     console "org.grails:grails-console"
 }

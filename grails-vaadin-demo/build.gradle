@@ -1,14 +1,15 @@
 buildscript {
     repositories {
-        mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
         maven { url 'https://dl.bintray.com/ondrej-kvasnovsky/plugins/' }
+        mavenLocal()
+//        maven { uri('../repo') }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         //classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.1"
         classpath "org.grails.plugins:hibernate5:${gormVersion - ".RELEASE"}"
-        classpath 'com.vaadinongrails:vaadin-gradle-plugin:2.0.1'
+        classpath 'com.vaadinongrails:vaadin-gradle-plugin:2.0.3'
     }
 }
 
@@ -25,13 +26,13 @@ apply plugin: 'com.vaadinongrails.vaadin-gradle-plugin'
 apply plugin: 'project-report'
 
 repositories {
-    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
     maven { url 'https://dl.bintray.com/ondrej-kvasnovsky/plugins' }
+    mavenLocal()
 }
 
 dependencies {
-    compile('com.vaadinongrails:grails-vaadin-plugin:2.0.1') {
+    compile('com.vaadinongrails:grails-vaadin-plugin:2.0.3') {
         exclude group: 'com.vaadin', module: 'vaadin-client-compiler'
     }
 //    compile project(':grails-vaadin-plugin')
